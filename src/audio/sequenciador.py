@@ -1,0 +1,1 @@
+"""Sequenciador de comandos MelodyScript."""

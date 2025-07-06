@@ -1,0 +1,51 @@
+\_ MelodyScript - Frère Jacques (Irmão Jacques) _/
+\_ Uma implementação completa da canção popular francesa _/
+
+tempo = 120;  \_ BPM (batidas por minuto) _/
+instrumento piano;
+
+melodia frere_jacques {
+    \_ Parte 1: "Frère Jacques, Frère Jacques" _/
+    tocar do seminima;
+    tocar re seminima;
+    tocar mi seminima;
+    tocar do seminima;
+    
+    tocar do seminima;
+    tocar re seminima;
+    tocar mi seminima;
+    tocar do seminima;
+    
+    \_ Parte 2: "Dormez-vous? Dormez-vous?" _/
+    tocar mi seminima;
+    tocar fa seminima;
+    tocar sol minima;
+    
+    tocar mi seminima;
+    tocar fa seminima;
+    tocar sol minima;
+    
+    \_ Parte 3: "Sonnez les matines, sonnez les matines" _/
+    tocar sol colcheia;
+    tocar la colcheia;
+    tocar sol colcheia;
+    tocar fa colcheia;
+    tocar mi seminima;
+    tocar do seminima;
+    
+    tocar sol colcheia;
+    tocar la colcheia;
+    tocar sol colcheia;
+    tocar fa colcheia;
+    tocar mi seminima;
+    tocar do seminima;
+    
+    \_ Parte 4: "Din, din, don! Din, din, don!" _/
+    tocar do seminima;
+    tocar sol seminima;
+    tocar do minima;
+    
+    tocar do seminima;
+    tocar sol seminima;
+    tocar do minima;
+} 

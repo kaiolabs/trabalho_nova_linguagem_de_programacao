@@ -1,0 +1,111 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# MelodyScript - Integração com Sistema de Memória
+
+## Sistema de Memória do Projeto
+
+### Estrutura da Memória
+O projeto utiliza um sistema organizado de memória em [memory/](mdc:memory) com contexto persistente:
+
+#### Contexto Principal
+- [memory/conversation_context.json](mdc:memory/conversation_context.json) - Informações gerais do projeto
+- [memory/conversation_history.json](mdc:memory/conversation_history.json) - Histórico cronológico
+- [memory/current_task.json](mdc:memory/current_task.json) - Tarefa atual em andamento
+
+#### Contexto da Aplicação
+- [memory/application_context/components.json](mdc:memory/application_context/components.json) - Componentes reutilizáveis
+- [memory/application_context/services.json](mdc:memory/application_context/services.json) - Serviços disponíveis
+- [memory/application_context/business_logic.json](mdc:memory/application_context/business_logic.json) - Regras de negócio
+- [memory/application_context/ui_ux_patterns.json](mdc:memory/application_context/ui_ux_patterns.json) - Padrões de interface
+- [memory/application_context/tests.json](mdc:memory/application_context/tests.json) - Informações de testes
+- [memory/application_context/known_issues.json](mdc:memory/application_context/known_issues.json) - Problemas conhecidos
+- [memory/application_context/roadmap.json](mdc:memory/application_context/roadmap.json) - Roadmap futuro
+- [memory/application_context/best_practices.json](mdc:memory/application_context/best_practices.json) - Melhores práticas
+- [memory/application_context/learnings.json](mdc:memory/application_context/learnings.json) - Aprendizados
+
+## Princípios de Reutilização
+
+### Consulta Obrigatória
+**ANTES de qualquer implementação, SEMPRE consultar:**
+1. Sistema de memória para contexto existente
+2. Componentes já implementados
+3. Padrões estabelecidos
+4. Soluções similares já criadas
+
+### Componentes Identificados
+Principais componentes reutilizáveis do MelodyScript:
+- **Interpretador**: Motor principal de execução
+- **Parser**: Sistema de análise sintática
+- **Sintetizador**: Engine de áudio
+- **Linter**: Validador modular
+- **Teoria Musical**: Kalus utilitárias
+
+### Serviços Disponíveis
+- **Processamento de Comandos**: [src/linguagem/comandos/](mdc:src/linguagem/comandos)
+- **Geração de Áudio**: [src/audio/](mdc:src/audio)
+- **Validação**: [src/linter/](mdc:src/linter)
+- **Utilitários**: [src/utils/](mdc:src/utils)
+
+## Padrões Estabelecidos
+
+### Arquitetura
+- **Modularidade**: Cada componente tem responsabilidade única
+- **Inversão de Dependência**: Interfaces bem definidas
+- **Extensibilidade**: Sistema preparado para expansão
+
+### Nomenclatura
+- **Arquivos**: snake_case
+- **Classes**: PascalCase  
+- **Métodos**: snake_case
+- **Constantes**: UPPER_SNAKE_CASE
+
+### Documentação
+- **Docstrings**: Obrigatórias para classes e métodos públicos
+- **Type Hints**: Anotações de tipo em Python
+- **Comentários**: Explicações para lógica complexa
+
+## Boas Práticas Consolidadas
+
+### Desenvolvimento
+1. **Máxima Reutilização**: Evitar duplicação de código
+2. **Testes Unitários**: Cobertura adequada dos módulos
+3. **Separação de Concerns**: Responsabilidades bem definidas
+4. **Configuração Externa**: Parâmetros configuráveis
+
+### Qualidade de Código
+- **Linting**: Validação automática de estilo
+- **Formatação**: Padrão consistente
+- **Refatoração**: Melhoria contínua da estrutura
+- **Code Review**: Validação por pares
+
+## Aprendizados Registrados
+
+### Técnicos
+- Arquitetura modular facilita manutenção
+- Sistema de áudio requer cuidado com performance
+- Linter modular é mais fácil de estender
+- Type hints melhoram a robustez
+
+### Processo
+- Consulta à memória evita retrabalho
+- Exemplos auxiliam no entendimento
+- Documentação clara reduz dúvidas
+- Testes previnem regressões
+
+## Integração com Desenvolvimento
+
+### Workflow
+1. **Análise**: Consultar memória antes de implementar
+2. **Planejamento**: Identificar componentes reutilizáveis  
+3. **Implementação**: Seguir padrões estabelecidos
+4. **Validação**: Executar testes e linter
+5. **Documentação**: Atualizar memória com novos aprendizados
+
+### Responsabilidades
+- **Desenvolvedor**: Consultar memória sistematicamente
+- **Sistema**: Manter contexto atualizado
+- **Processo**: Garantir continuidade do conhecimento
+

@@ -1,0 +1,42 @@
+\_ debug_exemplo.mscr _/
+\_ Este arquivo demonstra o uso do sistema de configuração com modo debug _/
+
+\_ Definições globais _/
+tempo = 120;
+instrumento piano;
+forma_onda sine;
+
+\_ Acorde para o exemplo _/
+acorde DoMaior = <do mi sol>;
+
+\_ Melodia de exemplo _/
+melodia debug_exemplo {
+  \_ Quando o modo debug está ativado, mais informações são mostradas _/
+  \_ durante a execução da melodia _/
+  
+  \_ Tocar notas simples _/
+  tocar do semibreve;
+  tocar mi semibreve;
+  tocar sol semibreve;
+  
+  \_ Repetir um padrão (com debug mostrará mais informações) _/
+  repetir 2 vezes {
+    tocar la colcheia;
+    tocar si colcheia;
+  }
+  
+  \_ Usar uma função (com debug mostrará detalhes da chamada) _/
+  dobrar_tempo(tempo)
+  
+  \_ Tocar acorde _/
+  tocar DoMaior minima; 
+  
+  \_ Nota final _/
+  tocar do semibreve;
+}
+
+\_ Para executar este exemplo com o modo de debug ativado: _/
+\_ python -m src.melodyscript executar examples/debug_exemplo.mscr --debug _/
+\_  _/
+\_ Para usar configurações de um ambiente específico: _/
+\_ python -m src.melodyscript executar examples/debug_exemplo.mscr --env development _/ 

@@ -1,0 +1,253 @@
+\_ MelodyScript - Demonstração de todas as notas e frequências de um teclado _/
+\_ Demonstra todas as notas de um piano padrão de 88 teclas (A0 a C8) com suas frequências _/
+
+\_ Configurações globais _/
+tempo 120;
+forma_onda sine;
+
+\_ Demonstração de notas por oitava _/
+melodia demonstracao_notas {
+    instrumento piano;
+    configurar_envelope attack=0.01 decay=0.1 sustain=0.5 release=0.1;
+    
+    \_ Oitava 0 (Notas mais graves) _/
+    tocar la0 colcheia;   \_ Frequência: 27.50 Hz _/
+    tocar la#0 colcheia;  \_ Frequência: 29.14 Hz _/
+    tocar si0 colcheia;   \_ Frequência: 30.87 Hz _/
+    
+    \_ Oitava 1 _/
+    tocar do1 colcheia;   \_ Frequência: 32.70 Hz _/
+    tocar do#1 colcheia;  \_ Frequência: 34.65 Hz _/
+    tocar re1 colcheia;   \_ Frequência: 36.71 Hz _/
+    tocar re#1 colcheia;  \_ Frequência: 38.89 Hz _/
+    tocar mi1 colcheia;   \_ Frequência: 41.20 Hz _/
+    tocar fa1 colcheia;   \_ Frequência: 43.65 Hz _/
+    tocar fa#1 colcheia;  \_ Frequência: 46.25 Hz _/
+    tocar sol1 colcheia;  \_ Frequência: 49.00 Hz _/
+    tocar sol#1 colcheia; \_ Frequência: 51.91 Hz _/
+    tocar la1 colcheia;   \_ Frequência: 55.00 Hz _/
+    tocar la#1 colcheia;  \_ Frequência: 58.27 Hz _/
+    tocar si1 colcheia;   \_ Frequência: 61.74 Hz _/
+    
+    \_ Oitava 2 _/
+    tocar do2 colcheia;   \_ Frequência: 65.41 Hz _/
+    tocar do#2 colcheia;  \_ Frequência: 69.30 Hz _/
+    tocar re2 colcheia;   \_ Frequência: 73.42 Hz _/
+    tocar re#2 colcheia;  \_ Frequência: 77.78 Hz _/
+    tocar mi2 colcheia;   \_ Frequência: 82.41 Hz _/
+    tocar fa2 colcheia;   \_ Frequência: 87.31 Hz _/
+    tocar fa#2 colcheia;  \_ Frequência: 92.50 Hz _/
+    tocar sol2 colcheia;  \_ Frequência: 98.00 Hz _/
+    tocar sol#2 colcheia; \_ Frequência: 103.83 Hz _/
+    tocar la2 colcheia;   \_ Frequência: 110.00 Hz _/
+    tocar la#2 colcheia;  \_ Frequência: 116.54 Hz _/
+    tocar si2 colcheia;   \_ Frequência: 123.47 Hz _/
+    
+    \_ Oitava 3 _/
+    tocar do3 colcheia;   \_ Frequência: 130.81 Hz _/
+    tocar do#3 colcheia;  \_ Frequência: 138.59 Hz _/
+    tocar re3 colcheia;   \_ Frequência: 146.83 Hz _/
+    tocar re#3 colcheia;  \_ Frequência: 155.56 Hz _/
+    tocar mi3 colcheia;   \_ Frequência: 164.81 Hz _/
+    tocar fa3 colcheia;   \_ Frequência: 174.61 Hz _/
+    tocar fa#3 colcheia;  \_ Frequência: 185.00 Hz _/
+    tocar sol3 colcheia;  \_ Frequência: 196.00 Hz _/
+    tocar sol#3 colcheia; \_ Frequência: 207.65 Hz _/
+    tocar la3 colcheia;   \_ Frequência: 220.00 Hz _/
+    tocar la#3 colcheia;  \_ Frequência: 233.08 Hz _/
+    tocar si3 colcheia;   \_ Frequência: 246.94 Hz _/
+    
+    \_ Oitava 4 (Oitava central) _/
+    tocar do4 colcheia;   \_ Frequência: 261.63 Hz (Dó central) _/
+    tocar do#4 colcheia;  \_ Frequência: 277.18 Hz _/
+    tocar re4 colcheia;   \_ Frequência: 293.66 Hz _/
+    tocar re#4 colcheia;  \_ Frequência: 311.13 Hz _/
+    tocar mi4 colcheia;   \_ Frequência: 329.63 Hz _/
+    tocar fa4 colcheia;   \_ Frequência: 349.23 Hz _/
+    tocar fa#4 colcheia;  \_ Frequência: 369.99 Hz _/
+    tocar sol4 colcheia;  \_ Frequência: 392.00 Hz _/
+    tocar sol#4 colcheia; \_ Frequência: 415.30 Hz _/
+    tocar la4 colcheia;   \_ Frequência: 440.00 Hz (A440, padrão de afinação) _/
+    tocar la#4 colcheia;  \_ Frequência: 466.16 Hz _/
+    tocar si4 colcheia;   \_ Frequência: 493.88 Hz _/
+    
+    \_ Oitava 5 _/
+    tocar do5 colcheia;   \_ Frequência: 523.25 Hz _/
+    tocar do#5 colcheia;  \_ Frequência: 554.37 Hz _/
+    tocar re5 colcheia;   \_ Frequência: 587.33 Hz _/
+    tocar re#5 colcheia;  \_ Frequência: 622.25 Hz _/
+    tocar mi5 colcheia;   \_ Frequência: 659.25 Hz _/
+    tocar fa5 colcheia;   \_ Frequência: 698.46 Hz _/
+    tocar fa#5 colcheia;  \_ Frequência: 739.99 Hz _/
+    tocar sol5 colcheia;  \_ Frequência: 783.99 Hz _/
+    tocar sol#5 colcheia; \_ Frequência: 830.61 Hz _/
+    tocar la5 colcheia;   \_ Frequência: 880.00 Hz _/
+    tocar la#5 colcheia;  \_ Frequência: 932.33 Hz _/
+    tocar si5 colcheia;   \_ Frequência: 987.77 Hz _/
+    
+    \_ Oitava 6 _/
+    tocar do6 colcheia;   \_ Frequência: 1046.50 Hz _/
+    tocar do#6 colcheia;  \_ Frequência: 1108.73 Hz _/
+    tocar re6 colcheia;   \_ Frequência: 1174.66 Hz _/
+    tocar re#6 colcheia;  \_ Frequência: 1244.51 Hz _/
+    tocar mi6 colcheia;   \_ Frequência: 1318.51 Hz _/
+    tocar fa6 colcheia;   \_ Frequência: 1396.91 Hz _/
+    tocar fa#6 colcheia;  \_ Frequência: 1479.98 Hz _/
+    tocar sol6 colcheia;  \_ Frequência: 1567.98 Hz _/
+    tocar sol#6 colcheia; \_ Frequência: 1661.22 Hz _/
+    tocar la6 colcheia;   \_ Frequência: 1760.00 Hz _/
+    tocar la#6 colcheia;  \_ Frequência: 1864.66 Hz _/
+    tocar si6 colcheia;   \_ Frequência: 1975.53 Hz _/
+    
+    \_ Oitava 7 _/
+    tocar do7 colcheia;   \_ Frequência: 2093.00 Hz _/
+    tocar do#7 colcheia;  \_ Frequência: 2217.46 Hz _/
+    tocar re7 colcheia;   \_ Frequência: 2349.32 Hz _/
+    tocar re#7 colcheia;  \_ Frequência: 2489.02 Hz _/
+    tocar mi7 colcheia;   \_ Frequência: 2637.02 Hz _/
+    tocar fa7 colcheia;   \_ Frequência: 2793.83 Hz _/
+    tocar fa#7 colcheia;  \_ Frequência: 2959.96 Hz _/
+    tocar sol7 colcheia;  \_ Frequência: 3135.96 Hz _/
+    tocar sol#7 colcheia; \_ Frequência: 3322.44 Hz _/
+    tocar la7 colcheia;   \_ Frequência: 3520.00 Hz _/
+    tocar la#7 colcheia;  \_ Frequência: 3729.31 Hz _/
+    tocar si7 colcheia;   \_ Frequência: 3951.07 Hz _/
+    
+    \_ Oitava 8 (Nota mais aguda do piano) _/
+    tocar do8 colcheia;   \_ Frequência: 4186.01 Hz _/
+}
+
+\_ Melodia para testar uma escala cromática completa _/
+melodia escala_cromatica {
+    instrumento piano;
+    configurar_envelope attack=0.01 decay=0.05 sustain=0.2 release=0.1;
+    
+    \_ Escala cromática ascendente _/
+    tocar la0 semicolcheia;
+    tocar la#0 semicolcheia;
+    tocar si0 semicolcheia;
+    
+    tocar do1 semicolcheia;
+    tocar do#1 semicolcheia;
+    tocar re1 semicolcheia;
+    tocar re#1 semicolcheia;
+    tocar mi1 semicolcheia;
+    tocar fa1 semicolcheia;
+    tocar fa#1 semicolcheia;
+    tocar sol1 semicolcheia;
+    tocar sol#1 semicolcheia;
+    tocar la1 semicolcheia;
+    tocar la#1 semicolcheia;
+    tocar si1 semicolcheia;
+    
+    tocar do2 semicolcheia;
+    tocar do#2 semicolcheia;
+    tocar re2 semicolcheia;
+    tocar re#2 semicolcheia;
+    tocar mi2 semicolcheia;
+    tocar fa2 semicolcheia;
+    tocar fa#2 semicolcheia;
+    tocar sol2 semicolcheia;
+    tocar sol#2 semicolcheia;
+    tocar la2 semicolcheia;
+    tocar la#2 semicolcheia;
+    tocar si2 semicolcheia;
+    
+    tocar do3 semicolcheia;
+    tocar do#3 semicolcheia;
+    tocar re3 semicolcheia;
+    tocar re#3 semicolcheia;
+    tocar mi3 semicolcheia;
+    tocar fa3 semicolcheia;
+    tocar fa#3 semicolcheia;
+    tocar sol3 semicolcheia;
+    tocar sol#3 semicolcheia;
+    tocar la3 semicolcheia;
+    tocar la#3 semicolcheia;
+    tocar si3 semicolcheia;
+    
+    tocar do4 semicolcheia;
+    tocar do#4 semicolcheia;
+    tocar re4 semicolcheia;
+    tocar re#4 semicolcheia;
+    tocar mi4 semicolcheia;
+    tocar fa4 semicolcheia;
+    tocar fa#4 semicolcheia;
+    tocar sol4 semicolcheia;
+    tocar sol#4 semicolcheia;
+    tocar la4 semicolcheia;
+    tocar la#4 semicolcheia;
+    tocar si4 semicolcheia;
+    
+    tocar do5 semicolcheia;
+    tocar do#5 semicolcheia;
+    tocar re5 semicolcheia;
+    tocar re#5 semicolcheia;
+    tocar mi5 semicolcheia;
+    tocar fa5 semicolcheia;
+    tocar fa#5 semicolcheia;
+    tocar sol5 semicolcheia;
+    tocar sol#5 semicolcheia;
+    tocar la5 semicolcheia;
+    tocar la#5 semicolcheia;
+    tocar si5 semicolcheia;
+    
+    tocar do6 semicolcheia;
+    tocar do#6 semicolcheia;
+    tocar re6 semicolcheia;
+    tocar re#6 semicolcheia;
+    tocar mi6 semicolcheia;
+    tocar fa6 semicolcheia;
+    tocar fa#6 semicolcheia;
+    tocar sol6 semicolcheia;
+    tocar sol#6 semicolcheia;
+    tocar la6 semicolcheia;
+    tocar la#6 semicolcheia;
+    tocar si6 semicolcheia;
+    
+    tocar do7 semicolcheia;
+    tocar do#7 semicolcheia;
+    tocar re7 semicolcheia;
+    tocar re#7 semicolcheia;
+    tocar mi7 semicolcheia;
+    tocar fa7 semicolcheia;
+    tocar fa#7 semicolcheia;
+    tocar sol7 semicolcheia;
+    tocar sol#7 semicolcheia;
+    tocar la7 semicolcheia;
+    tocar la#7 semicolcheia;
+    tocar si7 semicolcheia;
+    
+    tocar do8 semicolcheia;
+    
+    \_ Pausa para efeito dramático _/
+    pausa minima;
+    
+    \_ Frase conclusiva com o Lá de referência (A440) _/
+    tocar la4 seminima;   \_ A440 - Frequência padrão de referência internacional _/
+}
+
+\_ Demonstração de diferentes oitavas da mesma nota _/
+melodia mesma_nota_diferentes_oitavas {
+    instrumento piano;
+    
+    \_ Dó em diferentes oitavas _/
+    tocar do1 colcheia;
+    tocar do2 colcheia;
+    tocar do3 colcheia;
+    tocar do4 colcheia;
+    tocar do5 colcheia;
+    tocar do6 colcheia;
+    tocar do7 colcheia;
+    tocar do8 colcheia;
+    
+    \_ Lá em diferentes oitavas _/
+    tocar la0 colcheia;
+    tocar la1 colcheia;
+    tocar la2 colcheia;
+    tocar la3 colcheia;
+    tocar la4 colcheia;  \_ A440 _/
+    tocar la5 colcheia;
+    tocar la6 colcheia;
+    tocar la7 colcheia;
+} 

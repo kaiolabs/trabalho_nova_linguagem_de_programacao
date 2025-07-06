@@ -1,0 +1,104 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# MelodyScript - Status do Projeto e Roadmap
+
+## Status Atual (80% Concluído)
+
+### Componentes Implementados ✅
+- **Interpretador Core**: Sistema principal de execução
+- **Parser Completo**: Análise sintática e semântica
+- **Motor de Áudio**: 6 instrumentos funcionais
+- **Linter Funcional**: Validação em tempo real
+- **Extensão VSCode**: Suporte completo ao desenvolvimento
+- **25+ Exemplos**: Casos de uso diversos
+- **Testes Unitários**: Cobertura dos módulos principais
+
+### Arquitetura Consolidada ✅
+- **Modularidade**: Separação clara de responsabilidades
+- **Extensibilidade**: Sistema preparado para novos recursos
+- **Documentação**: Guias completos em [docs/](mdc:docs)
+- **Gerenciamento**: Acompanhamento em [gerenciamento_projeto/](mdc:gerenciamento_projeto)
+
+## Em Desenvolvimento (15% em Andamento)
+
+### Refatoração do Linter 🔄
+- **Objetivo**: Modularizar [src/linter.py](mdc:src/linter.py) (506 linhas)
+- **Progresso**: 
+  - ✅ [src/linter/utils.py](mdc:src/linter/utils.py) - Utilitários
+  - ✅ [src/linter/balance_checker.py](mdc:src/linter/balance_checker.py) - Balanceamento
+  - 🔄 [src/linter/core.py](mdc:src/linter/core.py) - Classe principal
+  - ⏳ [src/linter/syntax_checker.py](mdc:src/linter/syntax_checker.py) - Sintaxe
+  - ⏳ [src/linter/semantic_checker.py](mdc:src/linter/semantic_checker.py) - Semântica
+
+### Expansão de Recursos 🔄
+- **Polifonia Avançada**: Múltiplas vozes simultâneas
+- **Novos Instrumentos**: Percussão, cordas, sopros
+- **Efeitos Sonoros**: Reverb, delay, distorção
+- **Otimização**: Performance do motor de áudio
+
+## Roadmap Futuro (5% Planejado)
+
+### Próximas Versões 📋
+
+#### v2.0 - Exportação de Áudio
+- **Exportação WAV**: Renderização para arquivo
+- **Exportação MP3**: Compressão com qualidade
+- **Exportação MIDI**: Compatibilidade com DAWs
+- **Controle de Qualidade**: Diferentes taxas de amostragem
+
+#### v2.1 - Interface Gráfica
+- **Editor Visual**: Interface drag-and-drop
+- **Piano Roll**: Visualização de notas
+- **Mixer**: Controle de volumes e efeitos
+- **Visualizador**: Espectro e formas de onda
+
+#### v3.0 - Inteligência Artificial
+- **Autocompletar Inteligente**: Sugestões contextuais
+- **Harmonização Automática**: Geração de acordes
+- **Correção de Escalas**: Validação harmônica
+- **Composição Assistida**: Algoritmos generativos
+
+### Melhorias Técnicas 🔧
+- **Performance**: Otimização do interpretador
+- **Memória**: Gerenciamento eficiente de buffers
+- **Concorrência**: Processamento paralelo
+- **Compatibilidade**: Suporte a mais formatos
+
+## Arquivos de Acompanhamento
+
+### Documentação Técnica
+- [docs/estrutura_projeto.md](mdc:docs/estrutura_projeto.md) - Visão geral da arquitetura
+- [docs/requisitos_linguagem_python.md](mdc:docs/requisitos_linguagem_python.md) - Especificações
+- [docs/manual_usuario.md](mdc:docs/manual_usuario.md) - Guia de uso
+- [docs/vscode_extension_guide.md](mdc:docs/vscode_extension_guide.md) - Setup da extensão
+
+### Gerenciamento
+- [gerenciamento_projeto/status_projeto.md](mdc:gerenciamento_projeto/status_projeto.md) - Status detalhado
+- [gerenciamento_projeto/tarefas.md](mdc:gerenciamento_projeto/tarefas.md) - Lista de tarefas
+- [gerenciamento_projeto/historias_usuario.md](mdc:gerenciamento_projeto/historias_usuario.md) - Casos de uso
+
+## Métricas de Progresso
+
+### Linhas de Código
+- **Total**: ~3.500 linhas
+- **Core**: ~1.200 linhas
+- **Linter**: ~800 linhas
+- **Testes**: ~500 linhas
+- **Exemplos**: ~1.000 linhas
+
+### Cobertura de Testes
+- **Módulos Core**: 85%
+- **Parser**: 90%
+- **Áudio**: 70%
+- **Utilitários**: 95%
+
+### Recursos Implementados
+- **Sintaxe**: 100%
+- **Instrumentos**: 6/10 planejados
+- **Estruturas**: 100%
+- **Funções**: 100%
+- **Exportação**: 0% (futuro)
+

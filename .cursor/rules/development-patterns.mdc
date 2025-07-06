@@ -1,0 +1,53 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# MelodyScript - Padrões de Desenvolvimento
+
+## Padrões de Código
+
+### Estrutura Modular
+- **Responsabilidade Única**: Cada módulo tem uma responsabilidade específica
+- **Separação de Concerns**: Parser, áudio, linter e utilitários são independentes
+- **Injeção de Dependências**: Componentes recebem dependências via construtor
+
+### Convenções de Nomenclatura
+- **Arquivos**: snake_case (ex: `parser_comandos.py`)
+- **Classes**: PascalCase (ex: `SintetizadorAudio`)
+- **Funções/Métodos**: snake_case (ex: `processar_comando`)
+- **Constantes**: UPPER_SNAKE_CASE (ex: `NOTAS_VALIDAS`)
+
+### Organização de Arquivos
+```
+src/linguagem/comandos/
+├── __init__.py          # Exportações do módulo
+├── processador.py       # Processador base
+├── comandos_simples.py  # Comandos básicos
+└── comandos_estruturas.py # Estruturas de controle
+```
+
+## Refatoração em Andamento
+
+### Linter Modularizado
+O linter original [src/linter.py](mdc:src/linter.py) está sendo refatorado em:
+- [src/linter/core.py](mdc:src/linter/core.py) - Classe principal MelodyScriptLinter
+- [src/linter/utils.py](mdc:src/linter/utils.py) - Utilitários compartilhados
+- [src/linter/balance_checker.py](mdc:src/linter/balance_checker.py) - Verificador de balanceamento
+- [src/linter/syntax_checker.py](mdc:src/linter/syntax_checker.py) - Validação sintática
+- [src/linter/semantic_checker.py](mdc:src/linter/semantic_checker.py) - Validação semântica
+
+### Princípios Aplicados
+- **SOLID**: Responsabilidade única, aberto/fechado, inversão de dependência
+- **DRY**: Evitar duplicação de código
+- **Type Hints**: Usar anotações de tipo em Python
+- **Documentação**: Docstrings detalhadas para classes e métodos
+
+## Testes
+- **Testes Unitários**: [tests/](mdc:tests/) - Cobertura de todos os módulos principais
+- **Executar Testes**: `python -m pytest tests/`
+- **Testes de Integração**: Validação end-to-end com exemplos reais
+
+## Dependências
+- **Produção**: [requirements.txt](mdc:requirements.txt) - Pygame, NumPy, etc.
+- **Desenvolvimento**: pytest, flake8, mypy (não obrigatórios)

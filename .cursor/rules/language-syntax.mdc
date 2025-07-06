@@ -1,0 +1,157 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# MelodyScript - Sintaxe e Recursos da Linguagem
+
+## Sintaxe Básica
+
+### Estrutura de Arquivos
+- **Extensão**: `.mscr`
+- **Delimitadores**: Chaves `{}` para blocos
+- **Sintaxe**: Inspirada em C/Java/Dart
+- **Comentários**: `//` para linha única, `/* */` para blocos
+
+### Notas Musicais
+```melodyscript
+// Notação Portuguesa
+do, re, mi, fa, sol, la, si
+
+// Notação Internacional
+C, D, E, F, G, A, B
+
+// Modificadores
+do#   // Sustenido
+reb   // Bemol
+```
+
+### Durações
+```melodyscript
+// Durações básicas
+1/1   // Semibreve
+1/2   // Mínima
+1/4   // Semínima
+1/8   // Colcheia
+1/16  // Semicolcheia
+```
+
+## Estruturas de Controle
+
+### Repetição
+```melodyscript
+repetir(4) {
+    do 1/4;
+    mi 1/4;
+}
+```
+
+### Condicionais
+```melodyscript
+se (condicao) {
+    // código
+} senao {
+    // código alternativo
+}
+```
+
+### Loops
+```melodyscript
+para cada nota em [do, mi, sol] {
+    nota 1/4;
+}
+```
+
+## Instrumentos e Configurações
+
+### Mudança de Instrumento
+```melodyscript
+instrumento piano;    // Padrão
+instrumento guitarra;
+instrumento violino;
+instrumento flauta;
+instrumento baixo;
+instrumento sintetizador;
+```
+
+### Configurações de Áudio
+```melodyscript
+// Envelope ADSR
+ataque 0.1;
+decaimento 0.2;
+sustentacao 0.7;
+liberacao 0.3;
+
+// Forma de onda
+onda senoidal;     // sine
+onda quadrada;     // square
+onda dente_serra;  // sawtooth
+onda triangular;   // triangle
+```
+
+## Recursos Avançados
+
+### Acordes
+```melodyscript
+// Acorde básico
+[do, mi, sol] 1/2;
+
+// Acorde com inversões
+[mi, sol, do] 1/4;
+```
+
+### Funções Definidas pelo Usuário
+```melodyscript
+funcao escala_do_maior() {
+    do 1/4; re 1/4; mi 1/4; fa 1/4;
+    sol 1/4; la 1/4; si 1/4; do 1/4;
+}
+
+// Chamada da função
+escala_do_maior();
+```
+
+### Blocos Paralelos
+```melodyscript
+paralelo {
+    // Melodia principal
+    bloco1 {
+        do 1/2; mi 1/2; sol 1/2;
+    }
+    
+    // Harmonia
+    bloco2 {
+        [do, mi, sol] 1/1;
+    }
+}
+```
+
+## Teoria Musical Integrada
+
+### Escalas Automáticas
+O sistema possui conhecimento de:
+- 88 teclas de piano (A0 a C8)
+- Escalas maiores e menores
+- Progressões harmônicas
+- Intervalos musicais
+
+### Frequências
+- Conversão automática nota → frequência
+- Base: A4 = 440Hz
+- Temperamento igual
+
+## Exemplos de Referência
+
+### Arquivos de Exemplo
+- [examples/ola_mundo.mscr](mdc:examples/ola_mundo.mscr) - Exemplo básico
+- [examples/escalas.mscr](mdc:examples/escalas.mscr) - Escalas musicais
+- [examples/acordes.mscr](mdc:examples/acordes.mscr) - Progressões harmônicas
+- [examples/funcoes_usuario.mscr](mdc:examples/funcoes_usuario.mscr) - Funções customizadas
+- [examples/instrumentos.mscr](mdc:examples/instrumentos.mscr) - Diferentes timbres
+
+### Casos de Uso
+1. **Composição Musical**: Criação de melodias e harmonias
+2. **Educação Musical**: Ensino de teoria musical
+3. **Prototipagem Rápida**: Teste de ideias musicais
+4. **Análise Harmônica**: Estudo de progressões
+

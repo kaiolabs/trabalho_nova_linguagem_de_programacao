@@ -1,0 +1,238 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "MelodyScript",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#keywords" },
+    { "include": "#notes" },
+    { "include": "#durations" },
+    { "include": "#modifiers" },
+    { "include": "#numbers" },
+    { "include": "#strings" },
+    { "include": "#operators" },
+    { "include": "#punctuation" },
+    { "include": "#blocks" },
+    { "include": "#chords" },
+    { "include": "#conditionals" },
+    { "include": "#functions" },
+    { "include": "#variables" },
+    { "include": "#scales" },
+    { "include": "#audio_commands" },
+    { "include": "#invalid_syntax" }
+  ],
+  "repository": {
+    "comments": {
+      "begin": "\\\\_",
+      "end": "\\_\\/",
+      "name": "comment.block.melodyscript"
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "match": "\\b(melodia|tocar|tocar_acorde|pausa|repetir|vezes|tempo|instrumento|forma_onda|acorde|envelope|attack|decay|sustain|release|funcao|retornar|escala|se|senao|configurar_envelope|configurar_forma_onda|entrada|secao|para_cada|em|reverso)\\b",
+          "name": "keyword.control.melodyscript"
+        }
+      ]
+    },
+    "notes": {
+      "match": "\\b(do|re|mi|fa|sol|la|si|c|d|e|f|g|a|b)\\b",
+      "name": "entity.name.tag.melodyscript"
+    },
+    "durations": {
+      "match": "\\b(breve|semibreve|minima|seminima|colcheia|semicolcheia|fusa|semifusa)\\b",
+      "name": "support.type.melodyscript"
+    },
+    "modifiers": {
+      "match": "([#b])",
+      "name": "entity.name.function.melodyscript"
+    },
+    "numbers": {
+      "match": "\\b([0-9]+(\\.([0-9])+)?)\\b",
+      "name": "constant.numeric.melodyscript"
+    },
+    "strings": {
+      "match": "\"([^\"\\\\]|\\\\.)*\"",
+      "name": "string.quoted.double.melodyscript"
+    },
+    "operators": {
+      "match": "(=|==|!=|>|<|>=|<=|\\+|-|\\*|\\/|\\&\\&|\\|\\||:)",
+      "name": "keyword.operator.melodyscript"
+    },
+    "punctuation": {
+      "patterns": [
+        {
+          "match": ";",
+          "name": "punctuation.terminator.melodyscript"
+        },
+        {
+          "match": "\\{",
+          "name": "punctuation.section.braces.begin.melodyscript"
+        },
+        {
+          "match": "\\}",
+          "name": "punctuation.section.braces.end.melodyscript"
+        },
+        {
+          "match": "\\(",
+          "name": "punctuation.section.parens.begin.melodyscript"
+        },
+        {
+          "match": "\\)",
+          "name": "punctuation.section.parens.end.melodyscript"
+        },
+        {
+          "match": ",",
+          "name": "punctuation.separator.comma.melodyscript"
+        }
+      ]
+    },
+    "blocks": {
+      "patterns": [
+        {
+          "begin": "{",
+          "end": "}",
+          "beginCaptures": {
+            "0": { "name": "punctuation.section.braces.begin.melodyscript" }
+          },
+          "endCaptures": {
+            "0": { "name": "punctuation.section.braces.end.melodyscript" }
+          },
+          "name": "meta.block.melodyscript",
+          "patterns": [
+            { "include": "$self" }
+          ]
+        }
+      ]
+    },
+    "chords": {
+      "patterns": [
+        {
+          "begin": "<(?![=<>])",
+          "end": "(?<![=<>-])>",
+          "beginCaptures": {
+            "0": { "name": "punctuation.definition.chord.begin.melodyscript" }
+          },
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.chord.end.melodyscript" }
+          },
+          "name": "string.quoted.melodyscript",
+          "patterns": [
+            { "include": "#notes" },
+            { "include": "#modifiers" }
+          ]
+        }
+      ]
+    },
+    "conditionals": {
+      "patterns": [
+        {
+          "begin": "\\b(se)\\s*\\(",
+          "end": "\\)\\s*\\{",
+          "beginCaptures": {
+            "1": { "name": "keyword.control.conditional.melodyscript" }
+          },
+          "endCaptures": {
+            "0": { "name": "punctuation.section.parens.end.melodyscript" }
+          },
+          "name": "meta.conditional.melodyscript",
+          "patterns": [
+            { "include": "$self" }
+          ]
+        },
+        {
+          "match": "\\b(senao)\\s*\\{",
+          "captures": {
+            "1": { "name": "keyword.control.conditional.melodyscript" }
+          },
+          "name": "meta.conditional.else.melodyscript"
+        }
+      ]
+    },
+    "functions": {
+      "patterns": [
+        {
+          "begin": "\\b(funcao)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\(",
+          "end": "\\)\\s*\\{",
+          "beginCaptures": {
+            "1": { "name": "keyword.control.melodyscript" },
+            "2": { "name": "entity.name.function.melodyscript" }
+          },
+          "endCaptures": {
+            "0": { "name": "punctuation.section.parens.end.melodyscript" }
+          },
+          "name": "meta.function.declaration.melodyscript",
+          "patterns": [
+            { "include": "$self" }
+          ]
+        },
+        {
+          "begin": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\(",
+          "end": "\\)",
+          "beginCaptures": {
+            "1": { "name": "entity.name.function.melodyscript" }
+          },
+          "endCaptures": {
+            "0": { "name": "punctuation.section.parens.end.melodyscript" }
+          },
+          "name": "meta.function.call.melodyscript",
+          "patterns": [
+            { "include": "$self" }
+          ]
+        },
+        {
+          "match": "\\b(dobrar_tempo|metade_tempo|transpor|repetir_padrao|calcular_duracao|calcular_frequencia|converter_nota|nota_para_frequencia|frequencia_para_nota)\\b",
+          "name": "support.function.builtin.melodyscript"
+        }
+      ]
+    },
+    "variables": {
+      "patterns": [
+        {
+          "match": "\\b(var|entrada|retornar)\\b",
+          "name": "storage.type.melodyscript"
+        },
+        {
+          "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\b",
+          "name": "variable.other.melodyscript"
+        }
+      ]
+    },
+    "scales": {
+      "patterns": [
+        {
+          "match": "\\b(escala|maior|menor|cromatica|pentatonica|blues|jonia|doria|frigia|lidia|mixolidia|eolia|locria)\\b",
+          "name": "support.constant.melodyscript"
+        }
+      ]
+    },
+    "audio_commands": {
+      "patterns": [
+        {
+          "match": "\\b(sine|square|triangle|sawtooth|dinamica|staccato|legato|crescendo|efeito|reverb|delay)\\b",
+          "name": "support.type.melodyscript"
+        }
+      ]
+    },
+    "invalid_syntax": {
+      "patterns": [
+        {
+          "match": "\\};",
+          "name": "invalid.illegal.stray-semicolon.melodyscript"
+        },
+        {
+          "match": "\\b(tempu|tiempo|tempoo|imstrumento|instrumentu|toca|toke|tokar|for|while|elso|esle|tocaar|paausa)\\b",
+          "name": "invalid.deprecated.melodyscript"
+        },
+        {
+          "match": "\\<(?![=>])[^>]*$",
+          "name": "invalid.illegal.unclosed-chord.melodyscript"
+        },
+        {
+          "match": "\\([^)]*$",
+          "name": "invalid.illegal.unclosed-parenthesis.melodyscript"
+        }
+      ]
+    }
+  },
+  "scopeName": "source.melodyscript"
+} 

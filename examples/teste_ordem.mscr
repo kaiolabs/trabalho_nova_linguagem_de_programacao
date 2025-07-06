@@ -1,0 +1,32 @@
+\_
+  Teste de Ordem de Execução em MelodyScript
+  
+  Este exemplo testa se as mensagens de pausas e configurações são exibidas na ordem correta.
+  
+  Execute com:
+  ./run_melodyscript.sh executar examples/teste_ordem.mscr
+_/
+
+\_ Configuração global _/
+tempo 120;
+
+melodia teste_ordem {
+    instrumento piano;
+    tocar do4 colcheia;
+    pausa colcheia;
+    
+    instrumento guitarra;
+    tocar mi4 colcheia;
+    pausa colcheia;
+    
+    instrumento violino;
+    tocar sol4 colcheia;
+    pausa colcheia;
+    
+    instrumento flauta;
+    tocar do5 colcheia;
+    
+    \_ Configurações de teste _/
+    configurar_envelope attack=0.01 decay=0.2 sustain=0.5 release=0.3;
+    configurar_forma_onda sine;
+} 

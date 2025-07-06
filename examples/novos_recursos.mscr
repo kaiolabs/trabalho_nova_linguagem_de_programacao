@@ -1,0 +1,77 @@
+\_ MelodyScript - Demonstração de Novos Recursos _/
+\_ Este exemplo demonstra os novos recursos implementados: acordes, funções e condicionais _/
+
+tempo = 120;  \_ BPM _/
+instrumento piano;
+forma_onda sine;
+
+\_ Configuração do envelope ADSR para um som mais suave _/
+envelope { attack = 0.05; decay = 0.1; sustain = 0.7; release = 0.3; }
+
+\_ Definição de acordes _/
+acorde DoMaior = <do mi sol>;
+acorde SolMaior = <sol si re>;
+acorde LaMenor = <la do mi>;
+acorde FaMaior = <fa la do>;
+
+\_ Melodia principal demonstrando recursos _/
+melodia recursos_novos {
+    \_ Reproduzir acordes definidos _/
+    tocar DoMaior seminima;
+    tocar SolMaior seminima;
+    tocar LaMenor seminima;
+    tocar FaMaior seminima;
+    
+    \_ Usar estrutura condicional - toca diferentes notas dependendo do tempo _/
+    se (tempo > 100) {
+        tocar do# seminima;
+        tocar mi# seminima;
+    } senao {
+        tocar re seminima;
+        tocar fa seminima;
+    }
+    
+    \_ Usar acordes literais (sem definição prévia) _/
+    tocar <mi sol si> minima;
+    
+    \_ Repetição com sintaxe melhorada _/
+    repetir 3 vezes {
+        tocar sol colcheia;
+        tocar la colcheia;
+        tocar si colcheia;
+        pausa colcheia;
+    }
+    
+    \_ Combinar condicional com repetição _/
+    se (tempo <= 130) {
+        repetir 2 vezes {
+            tocar DoMaior colcheia;
+            tocar SolMaior colcheia;
+        }
+    }
+    
+    \_ Demonstrar sequência de acordes _/
+    configurar_forma_onda sine;
+    tocar DoMaior minima;
+    
+    configurar_forma_onda triangle;
+    tocar SolMaior minima;
+    
+    configurar_forma_onda square;
+    tocar LaMenor minima;
+    
+    configurar_forma_onda sawtooth;
+    tocar FaMaior minima;
+    
+    \_ Retornar para a forma de onda original _/
+    configurar_forma_onda sine;
+    
+    \_ Nota final _/
+    tocar <do mi sol do> semibreve;
+}
+
+\_ Este exemplo demonstra os novos recursos de MelodyScript: _/
+\_ 1. Acordes - definidos com a sintaxe "acorde Nome = <nota1 nota2 ...>" _/
+\_ 2. Estruturas condicionais - usando a sintaxe "se (condição) { ... } senao { ... }" _/
+\_ 3. Repetição melhorada - usando a sintaxe "repetir N vezes { ... }" _/
+\_ 4. Acordes literais - usando a sintaxe "tocar <nota1 nota2 ...> duração" _/ 

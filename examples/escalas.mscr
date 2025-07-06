@@ -1,0 +1,85 @@
+\_ escalas.mscr _/
+\_ Exemplo de escalas musicais em MelodyScript _/
+
+\_ Definições globais _/
+tempo = 120;
+instrumento piano;
+forma_onda sine;
+
+\_ Configuração de envelope ADSR para notas curtas e definidas _/
+envelope {
+  attack = 0.02;
+  decay = 0.1;
+  sustain = 0.7;
+  release = 0.1;
+}
+
+\_ Melodia com escala de Dó Maior _/
+melodia escala_do_maior {
+  \_ Escala ascendente _/
+  tocar do colcheia;
+  tocar re colcheia;
+  tocar mi colcheia;
+  tocar fa colcheia;
+  tocar sol colcheia;
+  tocar la colcheia;
+  tocar si colcheia;
+  tocar do colcheia;
+  
+  \_ Pequena pausa _/
+  pausa seminima;
+  
+  \_ Escala descendente _/
+  tocar do colcheia;
+  tocar si colcheia;
+  tocar la colcheia;
+  tocar sol colcheia;
+  tocar fa colcheia;
+  tocar mi colcheia;
+  tocar re colcheia;
+  tocar do colcheia;
+  
+  \_ Acorde final _/
+  tocar <do mi sol> minima; 
+}
+
+\_ Melodia com escala cromática _/
+melodia escala_cromatica {
+  tocar do colcheia;
+  tocar do# colcheia;
+  tocar re colcheia;
+  tocar re# colcheia;
+  tocar mi colcheia;
+  tocar fa colcheia;
+  tocar fa# colcheia;
+  tocar sol colcheia;
+  tocar sol# colcheia;
+  tocar la colcheia;
+  tocar la# colcheia;
+  tocar si colcheia;
+  tocar do colcheia;
+  
+  \_ Pausa e final _/
+  pausa seminima;
+  tocar do minima;
+}
+
+\_ Melodia com escala pentatônica _/
+melodia escala_pentatonica {
+  \_ Escala pentatônica de Dó: Dó, Ré, Mi, Sol, Lá _/
+  tocar do colcheia;
+  tocar re colcheia;
+  tocar mi colcheia;
+  tocar sol colcheia;
+  tocar la colcheia;
+  
+  \_ Oitava acima _/
+  tocar do colcheia;
+  
+  \_ Descendente _/
+  tocar la colcheia;
+  tocar sol colcheia;
+  tocar mi colcheia;
+  tocar re colcheia;
+  tocar do minima;
+} 

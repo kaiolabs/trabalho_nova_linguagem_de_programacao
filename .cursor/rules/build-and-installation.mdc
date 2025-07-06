@@ -1,0 +1,85 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# MelodyScript - Build e Instalação
+
+## Processo de Build da Extensão VSCode
+
+### Estrutura da Extensão
+A extensão VSCode está localizada em [linter/](mdc:linter) com os seguintes componentes:
+- [linter/package.json](mdc:linter/package.json) - Configuração da extensão
+- [linter/src/extension.ts](mdc:linter/src/extension.ts) - Código principal
+- [linter/syntaxes/melodyscript.tmLanguage.json](mdc:linter/syntaxes/melodyscript.tmLanguage.json) - Destaque de sintaxe
+- [linter/snippets/melodyscript.json](mdc:linter/snippets/melodyscript.json) - 12 snippets inteligentes
+
+### Comandos de Build
+
+#### Instalação de Dependências
+```bash
+cd linter
+npm install
+```
+
+#### Compilação TypeScript
+```bash
+npm run compile
+```
+
+#### Geração do Pacote VSIX
+```bash
+npx vsce package
+```
+- Gera: `melodyscript-language-0.1.0.vsix`
+- Tamanho típico: ~17KB
+
+#### Instalação no VSCode
+```bash
+code --install-extension melodyscript-language-0.1.0.vsix
+```
+
+#### Verificação da Instalação
+```bash
+code --list-extensions | findstr melodyscript
+```
+- ID da extensão: `melody-team.melodyscript-language`
+
+### Scripts Automatizados
+- [rebuild_extension.bat](mdc:rebuild_extension.bat) - Windows PowerShell
+- [rebuild_extension.sh](mdc:rebuild_extension.sh) - Linux/macOS
+
+### Recursos da Extensão Instalada
+1. **Destaque de Sintaxe**: Colorização automática de código `.mscr`
+2. **Snippets Inteligentes**: 12 templates predefinidos
+3. **Validação em Tempo Real**: Integração com o linter
+4. **Execução com F5**: Executa código MelodyScript diretamente
+5. **Autocompletar**: Sugestões contextuais
+
+## Configuração do Ambiente
+
+### Dependências Python
+```bash
+pip install -r requirements.txt
+```
+
+### Scripts de Setup
+- [setup.bat](mdc:setup.bat) - Configuração Windows
+- [setup.sh](mdc:setup.sh) - Configuração Linux/macOS
+
+### Execução do MelodyScript
+- [run_melodyscript.bat](mdc:run_melodyscript.bat) - Windows
+- [run_melodyscript.sh](mdc:run_melodyscript.sh) - Linux/macOS
+
+## Troubleshooting
+
+### Problemas Comuns
+1. **vsce deprecated**: Warning esperado, não afeta funcionalidade
+2. **Extensão não aparece**: Usar linha de comando para instalação
+3. **F5 não funciona**: Verificar associação de arquivos `.mscr`
+
+### Alternativas de Instalação
+1. Interface VSCode: Menu (...) → "Install from VSIX"
+2. Paleta de comandos: `Ctrl+Shift+P` → "Extensions: Install from VSIX"
+3. Arrastar e soltar arquivo VSIX na aba de extensões
+

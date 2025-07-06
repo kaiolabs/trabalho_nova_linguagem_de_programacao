@@ -1,0 +1,145 @@
+\_
+  Mini Orquestra em MelodyScript
+  
+  Este exemplo demonstra o uso de diferentes instrumentos em uma pequena peça musical,
+  onde cada instrumento desempenha um papel específico em uma harmonia completa.
+  
+  Execute com:
+  ./run_melodyscript.sh executar examples/mini_orquestra.mscr
+_/
+
+\_ Configuração global _/
+tempo 100;
+
+\_ Definição de acordes para a peça _/
+acorde DoM = <do mi sol>;
+acorde SolM = <sol si re>;
+acorde LaM = <la do# mi>;
+acorde FaM = <fa la do>;
+
+melodia mini_orquestra {
+    \_ Primeira parte: Introdução com piano solo _/
+    instrumento piano;
+    configurar_envelope attack=0.02 decay=0.1 sustain=0.7 release=0.3;
+    
+    tocar do4 colcheia;
+    tocar mi4 colcheia;
+    tocar sol4 colcheia;
+    tocar do5 colcheia;
+    
+    tocar si4 colcheia;
+    tocar sol4 colcheia;
+    tocar re4 colcheia;
+    tocar sol4 colcheia;
+    
+    tocar la4 colcheia;
+    tocar mi4 colcheia;
+    tocar do#4 colcheia;
+    tocar mi4 colcheia;
+    
+    tocar fa4 colcheia;
+    tocar la4 colcheia;
+    tocar do5 colcheia;
+    tocar fa4 colcheia;
+    
+    \_ Ativar modo paralelo para a orquestração completa _/
+    modo_paralelo ativado;
+    
+    \_ Segunda parte: Todos os instrumentos juntos _/
+    
+    \_ Piano tocando acordes _/
+    instrumento piano;
+    tocar_acorde DoM minima;
+    tocar_acorde SolM minima;
+    tocar_acorde LaM minima;
+    tocar_acorde FaM minima;
+    tocar_acorde DoM semibreve;
+    
+    \_ Violino tocando melodia principal _/
+    instrumento violino;
+    pausa colcheia;
+    tocar sol4 seminima;
+    tocar mi5 seminima;
+    tocar re5 colcheia;
+    tocar si4 colcheia;
+    tocar do5 minima;
+    
+    tocar la4 colcheia;
+    tocar si4 colcheia;
+    tocar do5 seminima;
+    tocar si4 colcheia;
+    tocar la4 colcheia;
+    tocar sol4 minima;
+    
+    tocar do5 seminima;
+    tocar si4 seminima;
+    tocar do5 seminima;
+    tocar mi5 seminima;
+    tocar do5 semibreve;
+    
+    \_ Flauta tocando contramelodias e ornamentações _/
+    instrumento flauta;
+    pausa minima;
+    pausa colcheia;
+    
+    tocar sol5 semicolcheia;
+    tocar la5 semicolcheia;
+    tocar si5 semicolcheia;
+    tocar do6 semicolcheia;
+    
+    tocar si5 colcheia;
+    tocar sol5 colcheia;
+    tocar mi5 colcheia;
+    
+    pausa seminima;
+    
+    tocar la5 semicolcheia;
+    tocar si5 semicolcheia;
+    tocar do6 semicolcheia;
+    tocar re6 semicolcheia;
+    
+    tocar do6 colcheia;
+    tocar la5 colcheia;
+    tocar fa5 colcheia;
+    
+    pausa seminima;
+    
+    tocar mi6 colcheia;
+    tocar re6 colcheia;
+    tocar do6 colcheia;
+    tocar si5 colcheia;
+    
+    tocar do6 semibreve;
+    
+    \_ Baixo tocando linhas de baixo _/
+    instrumento baixo;
+    tocar do3 seminima;
+    tocar do3 seminima;
+    tocar sol2 seminima;
+    tocar sol2 seminima;
+    tocar la2 seminima;
+    tocar la2 seminima;
+    tocar fa2 seminima;
+    tocar fa2 seminima;
+    tocar do3 minima;
+    tocar sol2 minima;
+    tocar do3 minima;
+    
+    \_ Terceira parte: Conclusão com guitarra _/
+    instrumento guitarra;
+    pausa semibreve;
+    pausa semibreve;
+    
+    \_ Arpejos finais _/
+    tocar do4 colcheia;
+    tocar mi4 colcheia;
+    tocar sol4 colcheia;
+    tocar do5 colcheia;
+    
+    tocar si4 colcheia;
+    tocar sol4 colcheia;
+    tocar mi4 colcheia;
+    tocar si4 colcheia;
+    
+    tocar do5 minima;
+} 

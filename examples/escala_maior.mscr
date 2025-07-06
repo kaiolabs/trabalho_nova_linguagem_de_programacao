@@ -1,0 +1,29 @@
+\_ MelodyScript - Escala Maior _/
+\_ Este exemplo toca uma escala de Dó maior ascendente e descendente _/
+
+tempo = 90;  \_ Um pouco mais lento para demonstração _/
+instrumento piano;
+
+melodia escala_do_maior {
+    \_ Escala ascendente _/
+    tocar do colcheia;
+    tocar re colcheia;
+    tocar mi colcheia;
+    tocar fa colcheia;
+    tocar sol colcheia;
+    tocar la colcheia;
+    tocar si colcheia;
+    tocar do colcheia;  \_ Oitava acima _/
+    
+    pausa seminima;  \_ Pequena pausa entre as partes _/
+    
+    \_ Escala descendente _/
+    tocar do colcheia;  \_ Oitava acima _/
+    tocar si colcheia;
+    tocar la colcheia;
+    tocar sol colcheia;
+    tocar fa colcheia;
+    tocar mi colcheia;
+    tocar re colcheia;
+    tocar do minima;  \_ Nota final mais longa _/
+} 

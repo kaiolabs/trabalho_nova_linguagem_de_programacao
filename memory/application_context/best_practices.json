@@ -1,0 +1,105 @@
+{
+  "best_practices": [
+    {
+      "name": "Organização em Blocos Semânticos",
+      "description": "Organizar o código da linguagem musical em blocos semânticos claros como definições de notas, ritmos e estruturas",
+      "rationale": "Melhora a legibilidade e facilita a manutenção do código musical",
+      "examples": ["definicao_de_notas", "definicao_de_ritmos", "definicao_de_estrutura"],
+      "anti_patterns": ["Misturar definições de diferentes tipos em um único bloco", "Definições sem agrupamento lógico"]
+    },
+    {
+      "name": "Nomenclatura Clara e Consistente",
+      "description": "Usar nomes descritivos e consistentes para todos os elementos musicais",
+      "rationale": "Facilita a compreensão do código e reduz a necessidade de comentários",
+      "examples": ["melodia_introducao", "ritmo_verso", "compasso = 4/4"],
+      "anti_patterns": ["Nomes abreviados demais", "Nomes genéricos como 'temp1', 'section1'"]
+    },
+    {
+      "name": "Validação de Referências Cruzadas",
+      "description": "Garantir que todos os elementos referenciados estejam definidos no código",
+      "rationale": "Evita erros de execução causados por elementos não definidos",
+      "examples": ["Verificar se melodia_introducao está definida antes de ser usada em 'conteudo'"],
+      "anti_patterns": ["Referenciar elementos sem defini-los", "Ignorar verificações de existência no linter"]
+    },
+    {
+      "name": "Modularidade",
+      "description": "Manter uma arquitetura modular com componentes bem definidos e separados (lexer, parser, transformer, audio engine)",
+      "rationale": "Facilita manutenção, testabilidade e permite evolução independente de cada componente",
+      "examples": ["Separação entre lexer.py e parser.py", "Interface bem definida entre parser e transformer"],
+      "anti_patterns": ["Código monolítico", "Funções com múltiplas responsabilidades"]
+    },
+    {
+      "name": "Testes Progressivos",
+      "description": "Implementar testes para cada etapa do pipeline de processamento da linguagem",
+      "rationale": "Garante que cada componente funcione corretamente antes de integrar com os demais",
+      "examples": ["Testes unitários para o lexer", "Testes de integração para a transformação AST → Python"],
+      "anti_patterns": ["Testar apenas no final do desenvolvimento", "Ignorar edge cases musicais"]
+    },
+    {
+      "name": "Feedback Claro de Erros",
+      "description": "Fornecer mensagens de erro claras e específicas para problemas na sintaxe musical",
+      "rationale": "Ajuda os usuários a corrigir rapidamente problemas em suas composições",
+      "examples": ["Erro: Nota 'fá#' não definida na linha 5", "Erro: Duração inválida 'semiminima' para nota 'dó'"],
+      "anti_patterns": ["Mensagens genéricas", "Falhar silenciosamente"]
+    },
+    {
+      "name": "Documentação Inline",
+      "description": "Documentar extensivamente o código e a gramática da linguagem",
+      "rationale": "Facilita a manutenção e evolução da linguagem, além de ajudar novos desenvolvedores",
+      "examples": ["Comentários explicando regras gramaticais", "Docstrings para cada função e classe"],
+      "anti_patterns": ["Código sem documentação", "Documentação desatualizada"]
+    },
+    {
+      "name": "Extensibilidade",
+      "description": "Projetar a linguagem para ser facilmente estendida com novos recursos musicais",
+      "rationale": "Permite a evolução da linguagem sem grandes refatorações",
+      "examples": ["Sistema de plugins para novos comandos", "Arquitetura que facilita adição de novos tipos de notas e escalas"],
+      "anti_patterns": ["Hardcoding de valores musicais", "Estruturas rígidas que dificultam extensões"]
+    },
+    {
+      "name": "Consistência de Nomenclatura",
+      "description": "Utilizar convenções de nomenclatura consistentes em todo o código e na linguagem musical",
+      "rationale": "Facilita o aprendizado e uso da linguagem, além de melhorar a legibilidade do código",
+      "examples": ["Convenção snake_case para funções e variáveis", "Nomes claros e descritivos para componentes e comandos"],
+      "anti_patterns": ["Misturar diferentes estilos de nomenclatura", "Abreviações não óbvias"]
+    },
+    {
+      "name": "Desenvolvimento Incremental",
+      "description": "Desenvolver a linguagem em incrementos, começando com o mínimo viável e adicionando recursos gradualmente",
+      "rationale": "Permite validar conceitos cedo e ajustar o design antes de investir em funcionalidades complexas",
+      "examples": ["Implementação do 'Olá Mundo' musical como primeiro passo", "Adição gradual de recursos musicais avançados"],
+      "anti_patterns": ["Tentar implementar todas as funcionalidades de uma vez", "Adiar testes até ter um sistema completo"]
+    },
+    {
+      "name": "Empacotamento Local de Extensões VSCode",
+      "description": "Sempre use ferramentas de empacotamento como vsce localmente via npx em vez de instalações globais",
+      "rationale": "Evita problemas de permissão, torna o processo mais portável entre diferentes sistemas operacionais e garante que todos os membros da equipe possam empacotar a extensão sem configurações adicionais",
+      "examples": [
+        "Usar 'npx vsce package' em vez de 'vsce package'",
+        "Adicionar @vscode/vsce como dependência de desenvolvimento no package.json",
+        "Scripts de automação que usam ferramentas via npx"
+      ],
+      "anti_patterns": [
+        "Exigir instalação global de ferramentas de empacotamento",
+        "Comandos que só funcionam com permissões de administrador",
+        "Scripts que não verificam a existência de dependências"
+      ]
+    },
+    {
+      "name": "Refatoração Modular por Responsabilidade Única",
+      "description": "Dividir componentes monolíticos em módulos especializados, cada um com uma responsabilidade única e bem definida",
+      "rationale": "Melhora a manutenibilidade, testabilidade e extensibilidade do código. Facilita a evolução independente de cada módulo e a identificação de problemas específicos",
+      "examples": [
+        "Dividir linter.py em core.py (orquestração), balance_checker.py (balanceamento), syntax_checker.py (sintaxe), semantic_checker.py (semântica), utils.py (utilitários) e cli.py (interface)",
+        "Separar verificadores de sintaxe, semântica e balanceamento em classes especializadas",
+        "Criar módulos de utilitários compartilhados para evitar duplicação de código"
+      ],
+      "anti_patterns": [
+        "Manter classes com mais de 500 linhas sem dividir responsabilidades",
+        "Misturar lógica de interface com lógica de negócio",
+        "Criar dependências circulares entre módulos",
+        "Duplicar código de utilidades em múltiplos módulos"
+      ]
+    }
+  ]
+} 

@@ -1,0 +1,52 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# MelodyScript - Arquitetura e Estrutura do Projeto
+
+## Visão Geral
+MelodyScript é uma linguagem de programação musical (DSL) com sintaxe inspirada em C/Java/Dart, utilizando chaves `{}` para delimitação de blocos. Arquivos da linguagem usam a extensão `.mscr`.
+
+## Arquitetura Modular
+
+### Core Components
+- **Interpretador Principal**: [src/core/interpretador.py](mdc:src/core/interpretador.py) - Coordena a execução e gerencia o fluxo principal
+- **Sistema de Parsing**: [src/linguagem/parser.py](mdc:src/linguagem/parser.py) - Sistema modular para análise de código
+- **Motor de Áudio**: [src/audio/sintetizador.py](mdc:src/audio/sintetizador.py) - Engine de áudio em tempo real com 6 instrumentos
+
+### Estrutura de Diretórios
+```
+src/
+├── core/           # Interpretador principal
+├── linguagem/      # Sistema de parsing e comandos
+│   └── comandos/   # Processadores de comandos específicos
+├── audio/          # Motor de áudio e sintetização
+├── linter/         # Validação de sintaxe e semântica
+└── utils/          # Teoria musical e utilitários
+```
+
+### Componentes de Desenvolvimento
+- **Linter**: [src/linter/](mdc:src/linter) - Validação modular em tempo real
+- **Extensão VSCode**: [linter/](mdc:linter) - Suporte ao desenvolvimento com destaque de sintaxe
+- **Exemplos**: [examples/](mdc:examples) - 25+ exemplos de código MelodyScript
+- **Testes**: [tests/](mdc:tests) - Suíte de testes unitários
+
+## Instrumentos Disponíveis
+1. Piano (padrão)
+2. Guitarra
+3. Violino
+4. Flauta
+5. Baixo
+6. Sintetizador
+
+## Recursos da Linguagem
+- Notas musicais (notação PT e EN)
+- Modificadores (# e b)
+- Acordes complexos
+- Estruturas de controle (repetir, se/senao, para cada)
+- Funções definidas pelo usuário
+- Blocos paralelos
+- Envelope ADSR
+- 4 formas de onda
+

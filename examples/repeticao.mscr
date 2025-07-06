@@ -1,0 +1,39 @@
+\_ Exemplo de uso de repetição na MelodyScript _/
+\_ Esta é uma versão simplificada de "Frère Jacques" com a nova sintaxe usando chaves _/
+
+tempo = 180;  \_ BPM (batidas por minuto) _/
+instrumento piano;
+
+melodia frere_jacques_com_repeticao {
+    \_ Primeira e segunda frases (repetidas) _/
+    repetir 2 vezes {
+        tocar do seminima;
+        tocar re seminima;
+        tocar mi seminima;
+        tocar do seminima;
+    }
+    
+    \_ Terceira e quarta frases (repetidas) _/
+    repetir 2 vezes {
+        tocar mi seminima;
+        tocar fa seminima;
+        tocar sol minima;
+    }
+    
+    \_ Quinta e sexta frases (repetidas) _/
+    repetir 2 vezes {
+        tocar sol colcheia;
+        tocar la colcheia;
+        tocar sol colcheia;
+        tocar fa colcheia;
+        tocar mi seminima;
+        tocar do seminima;
+    }
+    
+    \_ Sétima e oitava frases (repetidas) _/
+    repetir 2 vezes {
+        tocar do seminima;
+        tocar sol seminima;
+        tocar do minima;
+    }
+} 

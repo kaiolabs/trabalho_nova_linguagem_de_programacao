@@ -1,0 +1,263 @@
+{
+    "Melodia": {
+        "prefix": "melodia",
+        "body": [
+            "melodia ${1:nome_melodia} {",
+            "\t$0",
+            "}"
+        ],
+        "description": "Cria uma nova melodia"
+    },
+    "Tocar nota": {
+        "prefix": "tocar",
+        "body": [
+            "tocar ${1|do,re,mi,fa,sol,la,si|} ${2|breve,semibreve,minima,seminima,colcheia,semicolcheia,fusa,semifusa|};"
+        ],
+        "description": "Toca uma nota musical"
+    },
+    "Tocar nota com modificador": {
+        "prefix": "tocar#",
+        "body": [
+            "tocar ${1|do,re,mi,fa,sol,la,si|}${2|#,b|} ${3|breve,semibreve,minima,seminima,colcheia,semicolcheia,fusa,semifusa|};"
+        ],
+        "description": "Toca uma nota musical com modificador (sustenido ou bemol)"
+    },
+    "Pausa": {
+        "prefix": "pausa",
+        "body": [
+            "pausa ${1|breve,semibreve,minima,seminima,colcheia,semicolcheia,fusa,semifusa|};"
+        ],
+        "description": "Insere uma pausa musical"
+    },
+    "Repetição": {
+        "prefix": "repetir",
+        "body": [
+            "repetir ${1:2} vezes {",
+            "\t$0",
+            "}"
+        ],
+        "description": "Cria um bloco de repetição"
+    },
+    "Tempo": {
+        "prefix": "tempo",
+        "body": [
+            "tempo = ${1:120};"
+        ],
+        "description": "Define o tempo (BPM) da música"
+    },
+    "Instrumento": {
+        "prefix": "instrumento",
+        "body": [
+            "instrumento ${1:piano};"
+        ],
+        "description": "Define o instrumento da música"
+    },
+    "Envelope ADSR": {
+        "prefix": "envelope",
+        "body": [
+            "envelope { attack = ${1:0.05}; decay = ${2:0.1}; sustain = ${3:0.7}; release = ${4:0.3}; }"
+        ],
+        "description": "Configura envelope ADSR (Attack, Decay, Sustain, Release)"
+    },
+    "Configurar Envelope": {
+        "prefix": "configurar_envelope",
+        "body": [
+            "configurar_envelope { attack = ${1:0.05}; decay = ${2:0.1}; sustain = ${3:0.7}; release = ${4:0.3}; }"
+        ],
+        "description": "Configura envelope ADSR (Attack, Decay, Sustain, Release) dentro de uma melodia"
+    },
+    "Configurar Forma de Onda": {
+        "prefix": "configurar_forma_onda",
+        "body": [
+            "configurar_forma_onda ${1|sine,square,triangle,sawtooth|};"
+        ],
+        "description": "Configura a forma de onda para síntese de som"
+    },
+    "Definir Acorde": {
+        "prefix": "acorde",
+        "body": [
+            "acorde ${1:nome_acorde} = <${2:do mi sol}>;"
+        ],
+        "description": "Define um acorde com nome personalizado"
+    },
+    "Tocar Acorde": {
+        "prefix": "tocar_acorde",
+        "body": [
+            "tocar ${1:nome_acorde} ${2|breve,semibreve,minima,seminima,colcheia,semicolcheia,fusa,semifusa|};"
+        ],
+        "description": "Toca um acorde definido anteriormente"
+    },
+    "Tocar Acorde Literal": {
+        "prefix": "tocar_acorde_literal",
+        "body": [
+            "tocar <${1:do mi sol}> ${2|breve,semibreve,minima,seminima,colcheia,semicolcheia,fusa,semifusa|};"
+        ],
+        "description": "Toca um acorde literal (sem definição prévia)"
+    },
+    "Condicional Se": {
+        "prefix": "se",
+        "body": [
+            "se (${1:condição}) {",
+            "\t$0",
+            "}"
+        ],
+        "description": "Cria uma estrutura condicional"
+    },
+    "Condicional Se-Senao": {
+        "prefix": "se_senao",
+        "body": [
+            "se (${1:condição}) {",
+            "\t${2:# comandos se verdadeiro}",
+            "} senao {",
+            "\t${3:# comandos se falso}",
+            "}"
+        ],
+        "description": "Cria uma estrutura condicional com bloco alternativo"
+    },
+    "Para Cada": {
+        "prefix": "para_cada",
+        "body": [
+            "para_cada ${1:elemento} em ${2:coleção} {",
+            "\t$0",
+            "}"
+        ],
+        "description": "Cria um loop para iterar sobre uma coleção"
+    },
+    "Para Cada Reverso": {
+        "prefix": "para_cada_reverso",
+        "body": [
+            "para_cada ${1:elemento} em ${2:coleção} reverso {",
+            "\t$0",
+            "}"
+        ],
+        "description": "Cria um loop para iterar sobre uma coleção em ordem reversa"
+    },
+    "Definir Função": {
+        "prefix": "funcao",
+        "body": [
+            "funcao ${1:nome_funcao}(${2:parâmetros}) {",
+            "\t$0",
+            "}"
+        ],
+        "description": "Define uma função personalizada"
+    },
+    "Chamar Função": {
+        "prefix": "chamar",
+        "body": [
+            "${1:nome_funcao}(${2:argumentos});"
+        ],
+        "description": "Chama uma função definida"
+    },
+    "Comentário de Bloco": {
+        "prefix": "comentario",
+        "body": [
+            "\\_ ${1:Seu comentário aqui} _/"
+        ],
+        "description": "Adiciona um comentário de bloco"
+    },
+    "Forma de Onda": {
+        "prefix": "forma_onda",
+        "body": [
+            "forma_onda ${1|sine,square,triangle,sawtooth|};"
+        ],
+        "description": "Define a forma de onda para síntese"
+    },
+    "Retornar Valor": {
+        "prefix": "retornar",
+        "body": [
+            "retornar ${1:valor};"
+        ],
+        "description": "Retorna um valor de uma função"
+    },
+    "Tocada Sequencial": {
+        "prefix": "sequencia",
+        "body": [
+            "\\_ Sequência de notas _/",
+            "tocar do seminima;",
+            "tocar re seminima;",
+            "tocar mi seminima;",
+            "tocar fa seminima;",
+            "tocar sol seminima;",
+            "tocar la seminima;",
+            "tocar si seminima;",
+            "tocar do seminima;"
+        ],
+        "description": "Cria uma sequência de notas em escala"
+    },
+    "Frère Jacques (Template)": {
+        "prefix": "frere",
+        "body": [
+            "\\_ Frère Jacques (Irmão Jacques) _/",
+            "tempo = 120;",
+            "instrumento piano;",
+            "",
+            "melodia frere_jacques {",
+            "\t\\_ Primeira parte _/",
+            "\trepetir 2 vezes {",
+            "\t\ttocar do seminima;",
+            "\t\ttocar re seminima;",
+            "\t\ttocar mi seminima;",
+            "\t\ttocar do seminima;",
+            "\t}",
+            "\t",
+            "\t\\_ Segunda parte _/",
+            "\trepetir 2 vezes {",
+            "\t\ttocar mi seminima;",
+            "\t\ttocar fa seminima;",
+            "\t\ttocar sol minima;",
+            "\t}",
+            "\t",
+            "\t\\_ Terceira parte _/",
+            "\trepetir 2 vezes {",
+            "\t\ttocar sol colcheia;",
+            "\t\ttocar la colcheia;",
+            "\t\ttocar sol colcheia;",
+            "\t\ttocar fa colcheia;",
+            "\t\ttocar mi seminima;",
+            "\t\ttocar do seminima;",
+            "\t}",
+            "\t",
+            "\t\\_ Quarta parte _/",
+            "\trepetir 2 vezes {",
+            "\t\ttocar do seminima;",
+            "\t\ttocar sol seminima;",
+            "\t\ttocar do minima;",
+            "\t}",
+            "}"
+        ],
+        "description": "Template da música Frère Jacques"
+    },
+    "Escala Maior Dó": {
+        "prefix": "escala",
+        "body": [
+            "\\_ Escala de Dó Maior _/",
+            "tempo = 90;",
+            "instrumento piano;",
+            "",
+            "melodia escala_do_maior {",
+            "\t\\_ Escala ascendente _/",
+            "\ttocar do colcheia;",
+            "\ttocar re colcheia;",
+            "\ttocar mi colcheia;",
+            "\ttocar fa colcheia;",
+            "\ttocar sol colcheia;",
+            "\ttocar la colcheia;",
+            "\ttocar si colcheia;",
+            "\ttocar do colcheia;",
+            "\t",
+            "\tpausa seminima;",
+            "\t",
+            "\t\\_ Escala descendente _/",
+            "\ttocar do colcheia;",
+            "\ttocar si colcheia;",
+            "\ttocar la colcheia;",
+            "\ttocar sol colcheia;",
+            "\ttocar fa colcheia;",
+            "\ttocar mi colcheia;",
+            "\ttocar re colcheia;",
+            "\ttocar do minima;",
+            "}"
+        ],
+        "description": "Template de escala maior de Dó"
+    }
+} 

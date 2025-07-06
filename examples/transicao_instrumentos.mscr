@@ -1,0 +1,134 @@
+\_
+  Transição Entre Instrumentos em MelodyScript
+  
+  Este exemplo toca a mesma melodia simples com cada um dos instrumentos,
+  permitindo uma comparação direta dos timbres.
+  
+  Execute com:
+  ./run_melodyscript.sh executar examples/transicao_instrumentos.mscr
+_/
+
+\_ Configuração global _/
+tempo 90;
+
+\_ Definição de um tema simples para a comparação _/
+funcao tocar_tema() {
+    tocar do4 seminima;
+    tocar mi4 seminima; 
+    tocar sol4 seminima;
+    tocar do5 colcheia;
+    tocar sol4 colcheia;
+    pausa colcheia;
+    tocar mi4 colcheia;
+    tocar do4 seminima;
+}
+
+melodia comparacao_instrumentos {
+    \_ Introdução _/
+    configurar_envelope attack=0.01 decay=0.1 sustain=0.9 release=0.1;
+    configurar_forma_onda sine;
+    tocar sol5 colcheia;
+    tocar mi5 colcheia;
+    tocar do5 colcheia;
+    pausa seminima;
+    
+    \_ Piano _/
+    instrumento piano;
+    
+    \_ Anunciar instrumento _/
+    tocar do6 semicolcheia;
+    tocar do6 semicolcheia;
+    pausa colcheia;
+    
+    \_ Tocar o tema _/
+    tocar_tema();
+    pausa minima;
+    
+    \_ Guitarra _/
+    instrumento guitarra;
+    
+    \_ Anunciar instrumento _/
+    tocar do6 semicolcheia;
+    tocar do6 semicolcheia;
+    pausa colcheia;
+    
+    \_ Tocar o tema _/
+    tocar_tema();
+    pausa minima;
+    
+    \_ Violino _/
+    instrumento violino;
+    
+    \_ Anunciar instrumento _/
+    tocar do6 semicolcheia;
+    tocar do6 semicolcheia;
+    pausa colcheia;
+    
+    \_ Tocar o tema _/
+    tocar_tema();
+    pausa minima;
+    
+    \_ Flauta _/
+    instrumento flauta;
+    
+    \_ Anunciar instrumento _/
+    tocar do6 semicolcheia;
+    tocar do6 semicolcheia;
+    pausa colcheia;
+    
+    \_ Tocar o tema _/
+    tocar_tema();
+    pausa minima;
+    
+    \_ Baixo _/
+    instrumento baixo;
+    
+    \_ Anunciar instrumento _/
+    tocar do4 semicolcheia;
+    tocar do4 semicolcheia;
+    pausa colcheia;
+    
+    \_ Tocar o tema (oitava abaixo por ser baixo) _/
+    tocar do3 seminima;
+    tocar mi3 seminima; 
+    tocar sol3 seminima;
+    tocar do4 colcheia;
+    tocar sol3 colcheia;
+    pausa colcheia;
+    tocar mi3 colcheia;
+    tocar do3 seminima;
+    pausa minima;
+    
+    \_ Sintetizador _/
+    instrumento sintetizador;
+    
+    \_ Anunciar instrumento _/
+    tocar do6 semicolcheia;
+    tocar do6 semicolcheia;
+    pausa colcheia;
+    
+    \_ Tocar o tema _/
+    tocar_tema();
+    pausa minima;
+    
+    \_ Finalização: toca um acorde com cada instrumento em paralelo _/
+    modo_paralelo ativado;
+    
+    instrumento piano;
+    tocar_acorde <do4 mi4 sol4> minima;
+    
+    instrumento guitarra;
+    tocar_acorde <do4 mi4 sol4> minima;
+    
+    instrumento violino;
+    tocar_acorde <do4 mi4 sol4> minima;
+    
+    instrumento flauta;
+    tocar_acorde <do5 mi5 sol5> minima;
+    
+    instrumento baixo;
+    tocar_acorde <do3 mi3 sol3> minima;
+    
+    instrumento sintetizador;
+    tocar_acorde <do4 mi4 sol4> minima;
+} 

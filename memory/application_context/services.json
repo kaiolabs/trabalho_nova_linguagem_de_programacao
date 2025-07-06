@@ -1,0 +1,16 @@
+{
+  "services": [
+    {
+      "name": "Parser de Linguagem Musical",
+      "purpose": "Serviço que será desenvolvido para analisar e interpretar a sintaxe da linguagem musical",
+      "path": "a ser implementado",
+      "methods": ["parse", "validate", "convert_to_python"]
+    },
+    {
+      "name": "Linter Musical",
+      "purpose": "Serviço que será desenvolvido para realizar análise estática do código na linguagem musical",
+      "path": "a ser implementado",
+      "methods": ["lint", "fix", "report"]
+    }
+  ]
+} 

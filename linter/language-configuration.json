@@ -1,0 +1,56 @@
+{
+    "comments": {
+        "blockComment": [ "\\_", "_/" ]
+    },
+    "brackets": [
+        ["{", "}"],
+        ["(", ")"],
+        ["<", ">"]
+    ],
+    "autoClosingPairs": [
+        { "open": "{", "close": "}" },
+        { "open": "(", "close": ")" },
+        { "open": "<", "close": ">" },
+        { "open": "\"", "close": "\"" },
+        { "open": "\\_", "close": "_/" }
+    ],
+    "surroundingPairs": [
+        ["{", "}"],
+        ["(", ")"],
+        ["<", ">"],
+        ["\"", "\""]
+    ],
+    "folding": {
+        "markers": {
+            "start": "^\\s*melodia\\s+[a-zA-Z0-9_]+\\s*\\{",
+            "end": "^\\s*\\}"
+        }
+    },
+    "indentationRules": {
+        "increaseIndentPattern": "^\\s*(melodia|se|senao|repetir|para_cada|funcao).*\\{\\s*$",
+        "decreaseIndentPattern": "^\\s*\\}\\s*$"
+    },
+    "wordPattern": "(-?\\d*\\.\\d\\w*)|([^\\`\\~\\!\\@\\#\\%\\^\\&\\*\\(\\)\\-\\=\\+\\[\\{\\]\\}\\\\\\|\\;\\:\\'\\\"\\,\\.\\<\\>\\/\\?\\s]+)",
+    "onEnterRules": [
+        {
+            "beforeText": "^\\s*(melodia|se|senao|repetir|para_cada|funcao).*\\{\\s*$",
+            "action": { "indent": "indent" }
+        },
+        {
+            "beforeText": "^\\s*\\}\\s*$",
+            "action": { "indent": "outdent" }
+        },
+        {
+            "beforeText": ".*\\{\\s*$",
+            "action": { "indent": "indent" }
+        },
+        {
+            "beforeText": ".*\\}\\s*$",
+            "action": { "indent": "outdent" }
+        },
+        {
+            "beforeText": ".*;\\s*$",
+            "action": { "indent": "none" }
+        }
+    ]
+} 

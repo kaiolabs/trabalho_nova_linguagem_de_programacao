@@ -1,0 +1,163 @@
+\_
+  Demonstração de Instrumentos em MelodyScript
+  Este arquivo demonstra o uso dos diferentes instrumentos disponíveis na linguagem.
+_/
+
+\_ Configuração global padrão _/
+tempo 120;
+
+\_ Definição de acordes para os exemplos _/
+acorde DoM = <do mi sol>;
+acorde SolM = <sol si re>;
+acorde FaM = <fa la do>;
+
+\_ Demonstração de cada instrumento separadamente _/
+melodia demo_instrumentos {
+    \_ Piano (instrumento padrão) _/
+    configurar_envelope attack=0.02 decay=0.1 sustain=0.7 release=0.1;
+    instrumento piano;
+    
+    tocar do4 minima;
+    pausa seminima;
+    
+    tocar do4 seminima;
+    tocar mi4 seminima;
+    tocar sol4 seminima;
+    tocar_acorde DoM minima;
+    
+    pausa semibreve;
+    
+    \_ Guitarra _/
+    instrumento guitarra;
+    
+    tocar do4 minima;
+    pausa seminima;
+    
+    tocar do4 seminima;
+    tocar mi4 seminima;
+    tocar sol4 seminima;
+    tocar_acorde DoM minima;
+    
+    pausa semibreve;
+    
+    \_ Violino _/
+    instrumento violino;
+    
+    tocar do4 minima;
+    pausa seminima;
+    
+    tocar do4 seminima;
+    tocar mi4 seminima;
+    tocar sol4 seminima;
+    tocar_acorde DoM minima;
+    
+    pausa semibreve;
+    
+    \_ Flauta _/
+    instrumento flauta;
+    
+    tocar do4 minima;
+    pausa seminima;
+    
+    tocar do4 seminima;
+    tocar mi4 seminima;
+    tocar sol4 seminima;
+    tocar_acorde DoM minima;
+    
+    pausa semibreve;
+    
+    \_ Baixo _/
+    instrumento baixo;
+    
+    tocar do3 minima;
+    pausa seminima;
+    
+    tocar do3 seminima;
+    tocar mi3 seminima;
+    tocar sol3 seminima;
+    tocar_acorde DoM minima;
+    
+    pausa semibreve;
+    
+    \_ Sintetizador _/
+    instrumento sintetizador;
+    
+    tocar do4 minima;
+    pausa seminima;
+    
+    tocar do4 seminima;
+    tocar mi4 seminima;
+    tocar sol4 seminima;
+    tocar_acorde DoM minima;
+    
+    pausa semibreve;
+}
+
+\_ Exemplo de composição com múltiplos instrumentos _/
+melodia orquestra {
+    \_ Vamos tocar os instrumentos separadamente primeiro,
+       e depois mostrar como eles soam juntos _/
+    
+    \_ Piano tocando acorde _/
+    instrumento piano;
+    tocar_acorde DoM minima;
+    pausa minima;
+    
+    \_ Violino tocando melodia simples _/
+    instrumento violino;
+    tocar sol4 colcheia;
+    tocar la4 colcheia;
+    tocar si4 colcheia;
+    tocar do5 colcheia;
+    pausa minima;
+    
+    \_ Baixo tocando notas graves _/
+    instrumento baixo;
+    tocar do3 seminima;
+    tocar sol2 seminima;
+    pausa minima;
+    
+    \_ Flauta tocando notas agudas _/
+    instrumento flauta;
+    tocar do5 colcheia;
+    tocar re5 colcheia;
+    tocar mi5 colcheia;
+    tocar fa5 colcheia;
+    pausa minima;
+    
+    \_ Agora vamos mostrar como soa todos juntos com modo paralelo _/
+    modo_paralelo ativado;
+    
+    \_ Anunciar que começa o modo paralelo _/
+    instrumento piano;
+    tocar do4 semicolcheia;
+    tocar mi4 semicolcheia;
+    tocar sol4 semicolcheia;
+    tocar do5 semicolcheia;
+    pausa minima;
+    
+    \_ Piano tocando acordes _/
+    instrumento piano;
+    tocar_acorde DoM semibreve;
+    
+    \_ Violino tocando melodia _/
+    instrumento violino;
+    pausa colcheia;
+    tocar sol4 seminima;
+    tocar la4 seminima; 
+    tocar sol4 seminima;
+    tocar mi4 minima;
+    
+    \_ Baixo tocando notas graves _/
+    instrumento baixo;
+    tocar do3 minima;
+    tocar sol2 minima;
+    
+    \_ Flauta tocando ornamentações _/
+    instrumento flauta;
+    pausa minima;
+    tocar sol5 colcheia;
+    tocar la5 colcheia;
+    tocar si5 colcheia;
+    tocar do6 colcheia;
+} 

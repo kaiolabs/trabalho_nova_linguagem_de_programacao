@@ -1,0 +1,98 @@
+\_ formas_onda.mscr _/
+\_ Exemplo demonstrando as diferentes formas de onda disponíveis em MelodyScript _/
+
+\_ Definições globais _/
+tempo = 120;
+instrumento piano;
+
+\_ Envelope ADSR padrão para melhor comparação _/
+envelope {
+  attack = 0.05;
+  decay = 0.1;
+  sustain = 0.7;
+  release = 0.2;
+}
+
+\_ Melodia demonstrando forma de onda senoidal (sine) _/
+melodia onda_senoidal {
+  \_ Configurar forma de onda _/
+  forma_onda sine;
+  
+  \_ Tocar algumas notas _/
+  tocar do minima;
+  tocar mi minima;
+  tocar sol minima;
+  tocar do semibreve;
+  
+  \_ Pausa antes da próxima demonstração _/
+  pausa minima;
+}
+
+\_ Melodia demonstrando forma de onda quadrada (square) _/
+melodia onda_quadrada {
+  \_ Configurar forma de onda _/
+  forma_onda square;
+  
+  \_ Tocar as mesmas notas para comparação _/
+  tocar do minima;
+  tocar mi minima;
+  tocar sol minima;
+  tocar do semibreve;
+  
+  \_ Pausa antes da próxima demonstração _/
+  pausa minima;
+}
+
+\_ Melodia demonstrando forma de onda triangular (triangle) _/
+melodia onda_triangular {
+  \_ Configurar forma de onda _/
+  forma_onda triangle;
+  
+  \_ Tocar as mesmas notas para comparação _/
+  tocar do minima;
+  tocar mi minima;
+  tocar sol minima;
+  tocar do semibreve;
+  
+  \_ Pausa antes da próxima demonstração _/
+  pausa minima; 
+}
+
+\_ Melodia demonstrando forma de onda dente de serra (sawtooth) _/
+melodia onda_dente_serra {
+  \_ Configurar forma de onda _/
+  forma_onda sawtooth;
+  
+  \_ Tocar as mesmas notas para comparação _/
+  tocar do minima;
+  tocar mi minima;  
+  tocar sol minima;
+  tocar do semibreve;
+}
+
+\_ Melodia combinando todas as formas em sequência _/
+melodia todas_formas {
+  \_ Onda senoidal _/
+  forma_onda sine;
+  tocar do seminima;
+  tocar mi seminima;
+  
+  \_ Onda quadrada _/
+  forma_onda square;
+  tocar sol seminima;
+  tocar si seminima;
+  
+  \_ Onda triangular _/
+  forma_onda triangle;
+  tocar la seminima;
+  tocar fa seminima;
+  
+  \_ Onda dente de serra _/
+  forma_onda sawtooth;
+  tocar re seminima;
+  tocar do seminima;
+  
+  \_ Acorde final com onda senoidal _/
+  forma_onda sine;
+  tocar <do mi sol> semibreve;
+} 

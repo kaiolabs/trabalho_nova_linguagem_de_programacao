@@ -1,0 +1,70 @@
+\_ MelodyScript - Demonstração de Funções Predefinidas _/
+\_ Este exemplo demonstra o uso das funções predefinidas na linguagem _/
+
+tempo = 120;  \_ BPM _/
+instrumento piano;
+forma_onda sine;
+
+\_ A linguagem MelodyScript agora inclui funções predefinidas: _/
+\_ - dobrar_tempo(valor) _/
+\_ - metade_tempo(valor) _/
+\_ - transpor(nota, modificador, semitons) _/
+\_ - repetir_padrao(padrao, vezes) _/
+
+\_ Definição de acordes (deve estar fora da melodia) _/
+acorde DoMaior = <do mi sol>;
+acorde FaMaior = <fa la do>;
+
+melodia funcoes_exemplo {
+    \_ Tocar algumas notas básicas _/
+    tocar do seminima;
+    tocar mi seminima;
+    tocar sol seminima;
+    
+    \_ Usar a função dobrar_tempo para aumentar a velocidade _/
+    \_ dobrar_tempo(120) = 240 BPM _/
+    \_ Isso é feito internamente, mas a linguagem não altera o tempo global _/
+    dobrar_tempo(tempo)
+    
+    \_ Usar a função metade_tempo para reduzir a velocidade _/
+    \_ metade_tempo(120) = 60 BPM _/
+    metade_tempo(tempo)
+    
+    \_ Usar transpor para tocar notas transpostas _/
+    \_ Isso é uma função para demonstração, mas será implementada completamente no futuro _/
+    transpor("do", "", 4)  \_ Transpõe Dó 4 semitons acima (= Mi) _/
+    
+    \_ Demonstrar como as funções predefinidas podem ser encadeadas _/
+    \_ em construções condicionais _/
+    se (tempo > 100) {
+        \_ Se o tempo for maior que 100 BPM, tocar uma sequência mais rápida _/
+        repetir 2 vezes {
+            tocar la colcheia;
+            tocar si colcheia;
+            tocar do# colcheia;
+        }
+    } senao {
+        \_ Se o tempo for menor ou igual a 100 BPM, tocar uma sequência mais lenta _/
+        repetir 2 vezes {
+            tocar re minima;
+            tocar mi minima;
+        }
+    }
+    
+    \_ Alternar entre dois acordes várias vezes _/
+    repetir 3 vezes {
+        tocar DoMaior seminima;
+        tocar FaMaior seminima;
+    }
+    
+    \_ Nota final _/
+    tocar <do mi sol> semibreve;
+}
+
+\_ Este exemplo demonstra as funções predefinidas da MelodyScript: _/
+\_ 1. dobrar_tempo - calcula o dobro do valor fornecido _/
+\_ 2. metade_tempo - calcula a metade do valor fornecido _/
+\_ 3. transpor - transpõe uma nota por um número de semitons _/
+\_ 4. repetir_padrao - função para repetir um padrão musical _/
+\_  _/
+\_ Nota: Algumas funções são apenas para demonstração e serão implementadas completamente no futuro _/ 

@@ -1,0 +1,13 @@
+{
+  "iconDefinitions": {
+    "melodyscript": {
+      "iconPath": "./melodyscript-icon.svg"
+    }
+  },
+  "fileExtensions": {
+    "mscr": "melodyscript"
+  },
+  "languageIds": {
+    "melodyscript": "melodyscript"
+  }
+} 

@@ -1,0 +1,89 @@
+\_ funcoes_usuario.mscr _/
+\_ Demonstração do uso de funções definidas pelo usuário em MelodyScript _/
+
+\_ Definições globais _/
+tempo = 120;
+instrumento piano;
+forma_onda sine;
+
+\_ Configuração de envelope ADSR _/
+envelope {
+  attack = 0.05;
+  decay = 0.1;
+  sustain = 0.6;
+  release = 0.2;
+}
+
+\_ Definição de acordes base _/
+acorde DoMaior = <do mi sol>;
+acorde ReMenor = <re fa la>;
+acorde SolMaior = <sol si re>;
+acorde LaMenor = <la do mi>;
+
+\_ Função para tocar um arpejo ascendente _/
+funcao arpejo_ascendente(acorde, duracao) {
+  \_ A função recebe um acorde e toca suas notas em sequência _/
+  para cada nota em acorde {
+    tocar nota duracao;
+  }
+}
+
+\_ Função para tocar um arpejo descendente _/
+funcao arpejo_descendente(acorde, duracao) {
+  \_ A função recebe um acorde e toca suas notas em sequência reversa _/
+  para cada nota em reverso(acorde) {
+    tocar nota duracao;
+  }
+}
+
+\_ Função para tocar uma progressão simples _/
+funcao progressao(acorde1, acorde2, duracao) {
+  tocar acorde1 duracao;
+  tocar acorde2 duracao;
+}
+
+\_ Função para criar uma cadência ii-V-I _/
+funcao cadencia_ii_V_I(tom, duracao) {
+  \_ Determina os acordes baseados no tom _/
+  se (tom == "do") {
+    tocar ReMenor duracao;
+    tocar SolMaior duracao;
+    tocar DoMaior duracao;
+  } senao {
+    \_ Para outros tons, usaria transposição _/
+    \_ (Implementação simplificada para exemplo) _/
+    tocar LaMenor duracao;
+    tocar ReMenor duracao;
+    tocar SolMaior duracao;
+  }
+}
+
+\_ Melodia principal que usa as funções definidas _/
+melodia demonstracao_funcoes {
+  \_ Introdução - toca o acorde completo _/
+  tocar DoMaior minima;
+  
+  \_ Uso da função arpejo_ascendente _/
+  arpejo_ascendente(DoMaior, colcheia);
+  
+  \_ Uso da função arpejo_descendente _/
+  arpejo_descendente(SolMaior, colcheia);
+  
+  \_ Pequena pausa _/
+  pausa seminima;
+  
+  \_ Uso da função progressão várias vezes _/
+  repetir 2 vezes {
+    progressao(DoMaior, SolMaior, seminima);
+    progressao(LaMenor, ReMenor, seminima);
+  }
+  
+  \_ Demonstração da cadência ii-V-I _/
+  cadencia_ii_V_I("do", seminima);
+  
+  \_ Finalização _/
+  tocar DoMaior semibreve;
+}
+
+\_ Nota: Este exemplo demonstra a sintaxe proposta para funções definidas pelo usuário. _/
+\_ A implementação atual pode requerer ajustes adicionais no interpretador. _/ 

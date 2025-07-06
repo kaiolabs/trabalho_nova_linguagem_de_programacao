@@ -1,0 +1,91 @@
+{
+  "name": "melodyscript-language",
+  "displayName": "MelodyScript Language",
+  "description": "Linter e suporte à linguagem MelodyScript para compor música através de código",
+  "version": "0.1.0",
+  "publisher": "melody-team",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Linters",
+    "Snippets"
+  ],
+  "activationEvents": [
+    "onLanguage:melodyscript"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "melodyscript",
+        "aliases": [
+          "MelodyScript",
+          "melodyscript"
+        ],
+        "extensions": [
+          ".mscr"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./icons/melodyscript-icon.svg",
+          "dark": "./icons/melodyscript-icon.svg"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "melodyscript",
+        "scopeName": "source.melodyscript",
+        "path": "./syntaxes/melodyscript.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "melodyscript",
+        "path": "./snippets/melodyscript.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "melodyscript.execute",
+        "title": "MelodyScript: Executar Arquivo"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "melodyscript.execute",
+        "key": "f5",
+        "when": "editorLangId == melodyscript"
+      }
+    ],
+    "iconThemes": [
+      {
+        "id": "melodyscript-icons",
+        "label": "MelodyScript Icons",
+        "path": "./icons/icon-theme.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.7",
+    "@types/vscode": "^1.60.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.0",
+    "@typescript-eslint/parser": "^5.30.0",
+    "@vscode/vsce": "^2.32.0",
+    "eslint": "^8.13.0",
+    "typescript": "^4.6.3",
+    "vsce": "^2.6.7"
+  },
+  "dependencies": {
+    "child_process": "^1.0.2"
+  }
+}

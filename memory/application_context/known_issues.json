@@ -1,0 +1,16 @@
+{
+  "known_issues": [
+    {
+      "description": "Amostra da linguagem musical não possui definições para melodias e ritmos referenciados nas seções",
+      "affected_components": ["A-musica.txt"],
+      "workaround": "Implementar definições de melodias e ritmos no arquivo de exemplo",
+      "priority": "média"
+    },
+    {
+      "description": "Pequenas discrepâncias na contagem de delimitadores em exemplos complexos",
+      "affected_components": ["src/linter.py", "examples/novos_recursos.mscr", "examples/funcoes_predefinidas.mscr"],
+      "workaround": "Implementamos tolerância para pequenas diferenças (até 1) na contagem de delimitadores de acordes",
+      "priority": "baixa"
+    }
+  ]
+} 

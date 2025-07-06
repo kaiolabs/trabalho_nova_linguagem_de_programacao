@@ -1,0 +1,66 @@
+\_ MelodyScript - Demonstração de Formas de Onda e Envelope ADSR _/
+\_ Este exemplo demonstra as diferentes formas de onda e configurações de envelope _/
+
+tempo = 100;
+
+\_ Configuração global de envelope (opcional) _/
+envelope { attack = 0.05; decay = 0.1; sustain = 0.7; release = 0.3; }
+
+melodia formas_de_onda {
+    \_ Onda senoidal (padrão) _/
+    configurar_forma_onda sine;
+    tocar do minima;
+    tocar mi minima;
+    tocar sol minima;
+    pausa seminima;
+    
+    \_ Onda quadrada _/
+    configurar_forma_onda square;
+    tocar do minima;
+    tocar mi minima;
+    tocar sol minima;
+    pausa seminima;
+    
+    \_ Onda triangular _/
+    configurar_forma_onda triangle;
+    tocar do minima;
+    tocar mi minima;
+    tocar sol minima;
+    pausa seminima;
+    
+    \_ Onda dente de serra _/
+    configurar_forma_onda sawtooth;
+    tocar do minima;
+    tocar mi minima;
+    tocar sol minima;
+    pausa seminima;
+}
+
+melodia envelope_adsr {
+    \_ Reset para forma de onda padrão _/
+    configurar_forma_onda sine;
+    
+    \_ Envelope padrão _/
+    tocar do minima;
+    tocar mi minima;
+    pausa seminima;
+    
+    \_ Envelope com ataque rápido e release longo _/
+    configurar_envelope { attack = 0.01; decay = 0.1; sustain = 0.8; release = 0.5; }
+    tocar do minima;
+    tocar mi minima;
+    pausa seminima;
+    
+    \_ Envelope com ataque lento _/
+    configurar_envelope { attack = 0.3; decay = 0.1; sustain = 0.7; release = 0.2; }
+    tocar do minima;
+    tocar mi minima;
+    pausa seminima;
+    
+    \_ Combinação de envelope e forma de onda _/
+    configurar_envelope { attack = 0.05; decay = 0.2; sustain = 0.6; release = 0.4; }
+    configurar_forma_onda triangle;
+    tocar do minima;
+    tocar mi minima;
+    pausa seminima;
+} 

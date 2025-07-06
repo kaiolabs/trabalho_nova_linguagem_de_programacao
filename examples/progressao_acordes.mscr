@@ -1,0 +1,88 @@
+\_ progressao_acordes.mscr _/
+\_ Exemplo de progressão de acordes comuns em MelodyScript _/
+
+\_ Definições globais _/
+tempo = 100
+instrumento piano
+forma_onda sine
+
+\_ Configuração de envelope ADSR para acordes agradáveis _/
+envelope {
+  attack = 0.05;
+  decay = 0.15;
+  sustain = 0.6;
+  release = 0.3;
+}
+
+\_ Definição de acordes _/
+\_ Progressão I-V-vi-IV em Dó Maior (muito usada no pop) _/
+acorde DoMaior = <do mi sol>     \_ I _/
+acorde SolMaior = <sol si re>    \_ V _/
+acorde LaMenor = <la do mi>      \_ vi _/
+acorde FaMaior = <fa la do>      \_ IV _/
+
+\_ Melodia com progressão de acordes I-V-vi-IV _/
+melodia progressao_pop {
+  \_ Primeira vez - mais lenta _/
+  tocar DoMaior minima
+  tocar SolMaior minima
+  tocar LaMenor minima
+  tocar FaMaior minima
+  
+  \_ Segunda vez - mais rápida _/
+  repetir 2 vezes {
+    tocar DoMaior seminima
+    tocar SolMaior seminima
+    tocar LaMenor seminima
+    tocar FaMaior seminima
+  }
+  
+  \_ Final resolvendo no I _/
+  tocar DoMaior semibreve
+}
+
+\_ Progressão ii-V-I em Dó Maior (comum no jazz) _/
+acorde ReMenor = <re fa la>      \_ ii _/
+acorde SolDominante = <sol si re fa>  \_ V7 _/
+acorde DoMaior7 = <do mi sol si>  \_ Imaj7 _/
+
+\_ Melodia com progressão jazz ii-V-I _/
+melodia progressao_jazz {
+  \_ Progressão básica _/
+  repetir 2 vezes {
+    tocar ReMenor minima
+    tocar SolDominante minima
+    tocar DoMaior7 semibreve
+  }
+  
+  \_ Variação com turnaround _/
+  tocar ReMenor seminima
+  tocar SolDominante seminima
+  tocar DoMaior7 minima
+  tocar LaMenor seminima
+  tocar ReMenor seminima
+  tocar SolDominante minima
+  
+  \_ Final _/
+  tocar DoMaior7 semibreve
+}
+
+\_ Progressão Canon em Dó (baseada no Canon de Pachelbel: I-V-vi-iii-IV-I-IV-V) _/
+acorde MiMenor = <mi sol si>    \_ iii _/
+
+\_ Melodia Canon _/
+melodia canon {
+  repetir 2 vezes {
+    tocar DoMaior minima
+    tocar SolMaior minima
+    tocar LaMenor minima
+    tocar MiMenor minima
+    tocar FaMaior minima
+    tocar DoMaior minima
+    tocar FaMaior minima
+    tocar SolMaior minima
+  }
+  
+  \_ Final _/
+  tocar DoMaior semibreve
+} 

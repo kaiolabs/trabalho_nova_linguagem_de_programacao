@@ -1,0 +1,172 @@
+\_
+  Demonstração Simples de Instrumentos em MelodyScript
+  
+  Este exemplo toca uma nota longa seguida de um arpejo com cada instrumento,
+  com pausas claras entre eles para que você possa ouvir as diferenças no timbre.
+  
+  Execute com:
+  ./run_melodyscript.sh executar examples/instrumentos_simples.mscr
+_/
+
+\_ Configuração global _/
+tempo 80;
+
+melodia instrumentos_demo {
+    \_ ====================== PIANO ====================== _/
+    instrumento piano;
+    
+    \_ Anúncio do instrumento _/
+    configurar_forma_onda sine;
+    configurar_envelope attack=0.01 decay=0.1 sustain=0.8 release=0.2;
+    tocar do5 semicolcheia;
+    tocar mi5 semicolcheia;
+    tocar sol5 semicolcheia;
+    pausa seminima;
+    
+    \_ Demonstração do som do piano _/
+    configurar_envelope attack=0.02 decay=0.1 sustain=0.7 release=0.3;
+    
+    \_ Nota longa _/
+    tocar do4 minima;
+    pausa seminima;
+    
+    \_ Arpejo simples _/
+    tocar do4 colcheia;
+    tocar mi4 colcheia;
+    tocar sol4 colcheia;
+    tocar do5 colcheia;
+    tocar sol4 colcheia;
+    tocar mi4 colcheia;
+    tocar do4 colcheia;
+    pausa minima;
+    
+    \_ ====================== GUITARRA ====================== _/
+    \_ Anúncio do instrumento _/
+    configurar_forma_onda sine;
+    configurar_envelope attack=0.01 decay=0.1 sustain=0.8 release=0.2;
+    tocar do5 semicolcheia;
+    tocar mi5 semicolcheia;
+    tocar sol5 semicolcheia;
+    pausa seminima;
+    
+    \_ Demonstração do som da guitarra _/
+    instrumento guitarra;
+    
+    \_ Nota longa _/
+    tocar do4 minima;
+    pausa seminima;
+    
+    \_ Arpejo simples _/
+    tocar do4 colcheia;
+    tocar mi4 colcheia;
+    tocar sol4 colcheia;
+    tocar do5 colcheia;
+    tocar sol4 colcheia;
+    tocar mi4 colcheia;
+    tocar do4 colcheia;
+    pausa minima;
+    
+    \_ ====================== VIOLINO ====================== _/
+    \_ Anúncio do instrumento _/
+    configurar_forma_onda sine;
+    configurar_envelope attack=0.01 decay=0.1 sustain=0.8 release=0.2;
+    tocar do5 semicolcheia;
+    tocar mi5 semicolcheia;
+    tocar sol5 semicolcheia;
+    pausa seminima;
+    
+    \_ Demonstração do som do violino _/
+    instrumento violino;
+    
+    \_ Nota longa _/
+    tocar do4 minima;
+    pausa seminima;
+    
+    \_ Arpejo simples _/
+    tocar do4 colcheia;
+    tocar mi4 colcheia;
+    tocar sol4 colcheia;
+    tocar do5 colcheia;
+    tocar sol4 colcheia;
+    tocar mi4 colcheia;
+    tocar do4 colcheia;
+    pausa minima;
+    
+    \_ ====================== FLAUTA ====================== _/
+    \_ Anúncio do instrumento _/
+    configurar_forma_onda sine;
+    configurar_envelope attack=0.01 decay=0.1 sustain=0.8 release=0.2;
+    tocar do5 semicolcheia;
+    tocar mi5 semicolcheia;
+    tocar sol5 semicolcheia;
+    pausa seminima;
+    
+    \_ Demonstração do som da flauta _/
+    instrumento flauta;
+    
+    \_ Nota longa _/
+    tocar do5 minima;
+    pausa seminima;
+    
+    \_ Arpejo simples _/
+    tocar do5 colcheia;
+    tocar mi5 colcheia;
+    tocar sol5 colcheia;
+    tocar do6 colcheia;
+    tocar sol5 colcheia;
+    tocar mi5 colcheia;
+    tocar do5 colcheia;
+    pausa minima;
+    
+    \_ ====================== BAIXO ====================== _/
+    \_ Anúncio do instrumento _/
+    configurar_forma_onda sine;
+    configurar_envelope attack=0.01 decay=0.1 sustain=0.8 release=0.2;
+    tocar do5 semicolcheia;
+    tocar mi5 semicolcheia;
+    tocar sol5 semicolcheia;
+    pausa seminima;
+    
+    \_ Demonstração do som do baixo _/
+    instrumento baixo;
+    
+    \_ Nota longa _/
+    tocar do3 minima;
+    pausa seminima;
+    
+    \_ Arpejo simples _/
+    tocar do3 colcheia;
+    tocar mi3 colcheia;
+    tocar sol3 colcheia;
+    tocar do4 colcheia;
+    tocar sol3 colcheia;
+    tocar mi3 colcheia;
+    tocar do3 colcheia;
+    pausa minima;
+    
+    \_ ====================== SINTETIZADOR ====================== _/
+    \_ Anúncio do instrumento _/
+    configurar_forma_onda sine;
+    configurar_envelope attack=0.01 decay=0.1 sustain=0.8 release=0.2;
+    tocar do5 semicolcheia;
+    tocar mi5 semicolcheia;
+    tocar sol5 semicolcheia;
+    pausa seminima;
+    
+    \_ Demonstração do som do sintetizador _/
+    instrumento sintetizador;
+    
+    \_ Nota longa _/
+    tocar do4 minima;
+    pausa seminima;
+    
+    \_ Arpejo simples _/
+    tocar do4 colcheia;
+    tocar mi4 colcheia;
+    tocar sol4 colcheia;
+    tocar do5 colcheia;
+    tocar sol4 colcheia;
+    tocar mi4 colcheia;
+    tocar do4 colcheia;
+    pausa minima;
+} 
