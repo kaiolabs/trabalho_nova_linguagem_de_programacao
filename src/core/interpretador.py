@@ -160,17 +160,26 @@ class MelodyScriptInterpretador:
         modificador = comando["modificador"]
         duracao_nome = comando["duracao"]
 
-        # Calcular a frequência da nota
-        frequencia = calcular_frequencia(nota, modificador)
+        try:
+            # Calcular a frequência da nota
+            frequencia = calcular_frequencia(nota, modificador)
 
-        # Calcular a duração real em segundos
-        duracao_segundos = calcular_duracao(duracao_nome, self.parser.tempo)
+            # Calcular a duração real em segundos
+            duracao_segundos = calcular_duracao(duracao_nome, self.parser.tempo)
 
-        # Tocar a nota
-        instrumento_atual = self.audio_engine.instrumento_atual
-        print(f"Tocando {nota}{modificador if modificador else ''} ({duracao_nome}) - Instrumento: {instrumento_atual}")
-        sys.stdout.flush()  # Garantir exibição imediata
-        self.audio_engine.tocar_nota(frequencia, duracao_segundos)
+            # Tocar a nota
+            instrumento_atual = self.audio_engine.instrumento_atual
+            print(
+                f"Tocando {nota}{modificador if modificador else ''} ({duracao_nome}) - Instrumento: {instrumento_atual}"
+            )
+            sys.stdout.flush()  # Garantir exibição imediata
+            self.audio_engine.tocar_nota(frequencia, duracao_segundos)
+
+        except ValueError as e:
+            # Parar execução imediatamente em caso de nota ou duração inválida
+            print(f"\033[91m❌ {str(e)}\033[0m")
+            print("\033[91m🛑 Execução interrompida devido a erro na nota/duração.\033[0m")
+            raise SystemExit(1)
 
     def _executar_comando_tocar_acorde(self, comando):
         """
@@ -183,44 +192,51 @@ class MelodyScriptInterpretador:
         notas = comando["notas"]
         nome_acorde = comando.get("nome_acorde")
 
-        # Verificar se o nome_acorde é uma variável e resolvê-la se necessário
-        if nome_acorde:
-            if nome_acorde in self.escopo_atual:
-                # Se o acorde estiver no escopo local, usar ele diretamente
-                if isinstance(self.escopo_atual[nome_acorde], list):
-                    notas = self.escopo_atual[nome_acorde]
-            elif nome_acorde in self.variaveis:
-                # Se o acorde estiver no escopo global, usar ele diretamente
-                if isinstance(self.variaveis[nome_acorde], list):
-                    notas = self.variaveis[nome_acorde]
+        try:
+            # Verificar se o nome_acorde é uma variável e resolvê-la se necessário
+            if nome_acorde:
+                if nome_acorde in self.escopo_atual:
+                    # Se o acorde estiver no escopo local, usar ele diretamente
+                    if isinstance(self.escopo_atual[nome_acorde], list):
+                        notas = self.escopo_atual[nome_acorde]
+                elif nome_acorde in self.variaveis:
+                    # Se o acorde estiver no escopo global, usar ele diretamente
+                    if isinstance(self.variaveis[nome_acorde], list):
+                        notas = self.variaveis[nome_acorde]
 
-        # Calcular a duração real em segundos
-        duracao_segundos = calcular_duracao(duracao_nome, self.parser.tempo)
+            # Calcular a duração real em segundos
+            duracao_segundos = calcular_duracao(duracao_nome, self.parser.tempo)
 
-        # Calcular as frequências de todas as notas do acorde
-        frequencias = []
-        notas_str = []
+            # Calcular as frequências de todas as notas do acorde
+            frequencias = []
+            notas_str = []
 
-        for nota_info in notas:
-            nota = nota_info["nota"]
-            modificador = nota_info["modificador"]
-            frequencia = calcular_frequencia(nota, modificador)
-            frequencias.append(frequencia)
-            notas_str.append(f"{nota}{modificador if modificador else ''}")
+            for nota_info in notas:
+                nota = nota_info["nota"]
+                modificador = nota_info["modificador"]
+                frequencia = calcular_frequencia(nota, modificador)
+                frequencias.append(frequencia)
+                notas_str.append(f"{nota}{modificador if modificador else ''}")
 
-        # Informação sobre acorde tocado
-        if nome_acorde:
-            print(
-                f"Tocando acorde {nome_acorde} ({', '.join(notas_str)}) ({duracao_nome}) - Instrumento: {self.audio_engine.instrumento_atual}"
-            )
-        else:
-            print(
-                f"Tocando acorde <{' '.join(notas_str)}> ({duracao_nome}) - Instrumento: {self.audio_engine.instrumento_atual}"
-            )
-        sys.stdout.flush()  # Garantir exibição imediata
+            # Informação sobre acorde tocado
+            if nome_acorde:
+                print(
+                    f"Tocando acorde {nome_acorde} ({', '.join(notas_str)}) ({duracao_nome}) - Instrumento: {self.audio_engine.instrumento_atual}"
+                )
+            else:
+                print(
+                    f"Tocando acorde <{' '.join(notas_str)}> ({duracao_nome}) - Instrumento: {self.audio_engine.instrumento_atual}"
+                )
+            sys.stdout.flush()  # Garantir exibição imediata
 
-        # Tocar o acorde
-        self.audio_engine.tocar_nota(frequencias, duracao_segundos)
+            # Tocar o acorde
+            self.audio_engine.tocar_nota(frequencias, duracao_segundos)
+
+        except ValueError as e:
+            # Parar execução imediatamente em caso de nota ou duração inválida
+            print(f"\033[91m❌ {str(e)}\033[0m")
+            print("\033[91m🛑 Execução interrompida devido a erro no acorde.\033[0m")
+            raise SystemExit(1)
 
     def _executar_comando_pausa(self, comando):
         """
@@ -231,18 +247,25 @@ class MelodyScriptInterpretador:
         """
         duracao_nome = comando["duracao"]
 
-        # Calcular a duração real em segundos
-        duracao_segundos = calcular_duracao(duracao_nome, self.parser.tempo)
+        try:
+            # Calcular a duração real em segundos
+            duracao_segundos = calcular_duracao(duracao_nome, self.parser.tempo)
 
-        # Fazer uma pausa
-        instrumento_atual = self.audio_engine.instrumento_atual
-        print(f"Pausa ({duracao_nome}) - Instrumento: {instrumento_atual}")
+            # Fazer uma pausa
+            instrumento_atual = self.audio_engine.instrumento_atual
+            print(f"Pausa ({duracao_nome}) - Instrumento: {instrumento_atual}")
 
-        # Garantir que a mensagem seja exibida imediatamente
-        sys.stdout.flush()
+            # Garantir que a mensagem seja exibida imediatamente
+            sys.stdout.flush()
 
-        # Executar a pausa
-        self.audio_engine.pausa(duracao_segundos)
+            # Executar a pausa
+            self.audio_engine.pausa(duracao_segundos)
+
+        except ValueError as e:
+            # Parar execução imediatamente em caso de duração inválida
+            print(f"\033[91m❌ {str(e)}\033[0m")
+            print("\033[91m🛑 Execução interrompida devido a erro na duração da pausa.\033[0m")
+            raise SystemExit(1)
 
     def _executar_comando_configurar_envelope(self, comando):
         """

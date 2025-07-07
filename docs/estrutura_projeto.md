@@ -4,7 +4,16 @@ Este documento descreve a estrutura do projeto MelodyScript e como os diferentes
 
 ## Visão Geral
 
-MelodyScript é organizado seguindo o princípio de responsabilidade única, dividindo o código em módulos específicos para cada aspecto do sistema:
+MelodyScript é organizado seguindo o princípio de responsabilidade única, dividindo o código em módulos específicos para cada aspecto do sistema.
+
+### 🎯 **Sistema de Validação Robusto**
+
+O projeto foi aprimorado com um **Analisador Sintático Robusto baseado em GLC** que implementa:
+- **Análise Lexical Rigorosa:** Sistema de tipos de tokens com classificação precisa
+- **Gramática Livre de Contexto Formal:** Regras de produção BNF implementadas
+- **Análise Sintática Avançada:** Detecção de comandos malformados e estruturas incorretas
+- **Validação Semântica:** Análise contextual e verificação de coerência
+- **Sistema Extensível:** Adaptação automática a novos tokens e comandos
 
 ```
 src/

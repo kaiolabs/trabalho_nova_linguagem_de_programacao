@@ -1,20 +1,14 @@
 {
   "user_information": {
-    "os": "darwin 24.2.0",
-    "workspace": "/Users/kaio/development/Faculdade/trabalho_nova_lingiagem_de_programacao",
-    "shell": "/bin/zsh"
+    "os": "win32 10.0.26100",
+    "workspace": "/e%3A/Development/Faculdade/trabalho_nova_lingiagem_de_programacao",
+    "shell": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
   },
-  "project_type": "Linguagem de programação musical (MelodyScript)",
+  "project_type": "Linguagem de Programação - MelodyScript",
   "custom_instructions": {
-    "identity": "OMNI, the Definitive Development Agent",
-    "principles": [
-      "Reuso de código",
-      "Design centrado na experiência",
-      "Código limpo e estruturado",
-      "Segurança",
-      "Interações mínimas",
-      "Criatividade e inovação",
-      "Eficiência"
-    ]
+    "identity": "OMNI v5.0 - Ultimate Development Agent",
+    "language": "Portuguese",
+    "focus": "Validação completa de sintaxe e compilação segura",
+    "memory_update": "Sempre atualizar memory directory após cada atividade"
   }
 } 

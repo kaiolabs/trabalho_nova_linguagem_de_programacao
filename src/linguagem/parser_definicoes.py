@@ -229,19 +229,17 @@ class ProcessadorDefinicoes:
             # Extrair o conteúdo da melodia (sem as chaves)
             conteudo_melodia = conteudo[pos_inicial_bloco + 1 : pos_final_bloco]
 
-            # Processar e formatar o conteúdo da melodia para extrair os comandos corretamente
-            conteudo_processado = self.extrair_comandos_melodia(conteudo_melodia)
-
             # DEBUG: Mostrar detalhes da melodia encontrada
             print(f"DEBUG: Melodia encontrada: '{nome_melodia}'")
-            print("DEBUG: Conteúdo da melodia processado:")
+            print("DEBUG: Conteúdo da melodia bruto:")
             print("-----------------------------------")
-            print(conteudo_processado)
+            print(conteudo_melodia)
             print("-----------------------------------")
 
             self.parser.melodias[nome_melodia] = []
-            self.parser.processador_comandos.processar_comandos_simples(
-                conteudo_processado, self.parser.melodias[nome_melodia]
+            # Usar o processador de comandos completo que suporta estruturas (repetições, condicionais, etc.)
+            self.parser.processador_comandos.processar_comandos_melodia(
+                conteudo_melodia, self.parser.melodias[nome_melodia]
             )
 
             print(f"Melodia '{nome_melodia}' carregada com {len(self.parser.melodias[nome_melodia])} comandos")

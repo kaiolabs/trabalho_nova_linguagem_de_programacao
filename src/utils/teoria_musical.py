@@ -117,6 +117,9 @@ def calcular_frequencia(nota, modificador=None):
 
     Returns:
         Frequência da nota em Hz
+
+    Raises:
+        ValueError: Se a nota não for reconhecida
     """
     # Converter para minúsculo para garantir consistência
     nota_lower = nota.lower()
@@ -147,9 +150,10 @@ def calcular_frequencia(nota, modificador=None):
             # Ajuste da frequência base de acordo com a diferença de oitavas
             frequencia_base = freq_nota_base * (2**diferenca_oitavas)
         else:
-            # Caso não encontre, usar A4 (lá) como padrão
-            print(f"Aviso: Nota '{nota}' não reconhecida. Usando 'lá' (A4) como substituto.")
-            frequencia_base = 440.0
+            # ERRO: Nota inválida - NÃO substituir, lançar exceção
+            raise ValueError(
+                f"ERRO: Nota '{nota}' não é válida. Notas válidas: do, re, mi, fa, sol, la, si (ou C, D, E, F, G, A, B) com oitavas opcionais (ex: do4, mi5)"
+            )
 
     # Aplicar modificador se existir
     if modificador:
@@ -157,7 +161,9 @@ def calcular_frequencia(nota, modificador=None):
             fator = MODIFICADORES[modificador]
             frequencia_base *= fator
         else:
-            print(f"Aviso: Modificador '{modificador}' não reconhecido. Ignorando modificador.")
+            raise ValueError(
+                f"ERRO: Modificador '{modificador}' não é válido. Modificadores válidos: # (sustenido) ou b (bemol)"
+            )
 
     return frequencia_base
 
@@ -172,6 +178,9 @@ def calcular_duracao(nome_duracao, bpm):
 
     Returns:
         Duração em segundos
+
+    Raises:
+        ValueError: Se a duração não for reconhecida
     """
     # Converter para minúsculo para garantir consistência
     duracao_lower = nome_duracao.lower()
@@ -179,12 +188,13 @@ def calcular_duracao(nome_duracao, bpm):
     # Calcular a duração de uma batida em segundos
     beat_duration = 60.0 / bpm
 
-    # Obter o valor relativo da duração ou usar seminima como padrão
+    # Obter o valor relativo da duração
     if duracao_lower in DURACOES:
         duracao_relativa = DURACOES[duracao_lower]
     else:
-        print(f"Aviso: Duração '{nome_duracao}' não reconhecida. Usando 'seminima' como substituto.")
-        duracao_relativa = 0.5  # Valor da seminima
+        # ERRO: Duração inválida - NÃO substituir, lançar exceção
+        duracoes_validas = ", ".join(DURACOES.keys())
+        raise ValueError(f"ERRO: Duração '{nome_duracao}' não é válida. Durações válidas: {duracoes_validas}")
 
     # Calcular a duração em segundos
     # O fator 2 é um ajuste sonoro para melhorar a percepção das durações
@@ -202,14 +212,18 @@ def calcular_frequencias_acorde(nota_base, tipo_acorde, modificador=None):
 
     Returns:
         Lista de frequências em Hz das notas do acorde
+
+    Raises:
+        ValueError: Se o tipo de acorde não for reconhecido
     """
     # Calcular a frequência da nota base
     freq_base = calcular_frequencia(nota_base, modificador)
 
     # Verificar se o tipo de acorde é conhecido
     if tipo_acorde.lower() not in ACORDES:
-        print(f"Aviso: Tipo de acorde '{tipo_acorde}' não reconhecido. Usando acorde maior como substituto.")
-        intervalos = ACORDES["maior"]
+        # ERRO: Tipo de acorde inválido - NÃO substituir, lançar exceção
+        tipos_validos = ", ".join(ACORDES.keys())
+        raise ValueError(f"ERRO: Tipo de acorde '{tipo_acorde}' não é válido. Tipos válidos: {tipos_validos}")
     else:
         intervalos = ACORDES[tipo_acorde.lower()]
 

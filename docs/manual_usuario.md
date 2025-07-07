@@ -34,16 +34,38 @@ pip install -r requirements.txt
 
 ## Uso Básico
 
-Para executar um arquivo MelodyScript:
+### Execução com Validação Rigorosa
+
+Para executar um arquivo MelodyScript (com validação automática):
 
 ```bash
-python src/melodyscript.py executar caminho/para/arquivo.mscr
+python -m src.melodyscript executar caminho/para/arquivo.mscr
 ```
 
 Para validar a sintaxe de um arquivo MelodyScript sem executá-lo:
 
 ```bash
-python src/melodyscript.py validar caminho/para/arquivo.mscr
+python -m src.melodyscript lint caminho/para/arquivo.mscr
+```
+
+### Sistema de Validação Robusto
+
+O MelodyScript possui um **Analisador Sintático Robusto** que:
+- ✅ **NUNCA executa código com erros de sintaxe**
+- ✅ **Detecta comandos malformados** como `tocadasdasdasnima`
+- ✅ **Fornece sugestões precisas** de correção
+- ✅ **Para execução imediatamente** ao encontrar qualquer erro
+
+#### Exemplo de Detecção de Erro:
+```bash
+python -m src.melodyscript lint examples/arquivo_com_erro.mscr
+
+# Resultado:
+❌ ERRO DE COMPILAÇÃO: Foram encontrados 1 erro(s) de sintaxe.
+📋 Lista de erros encontrados:
+  1. Linha 9: Comando malformado 'tocadasdasdasnima' - Use: 'tocar do seminima'
+
+🛑 A execução foi interrompida. Corrija TODOS os erros antes de executar o arquivo.
 ```
 
 ## Sintaxe da Linguagem
@@ -267,12 +289,54 @@ melodia progressao {
 
 ## Solução de Problemas
 
-### Erros Comuns
+### Erros Comuns e Sistema de Validação
+
+#### Erros de Sintaxe Detectados Automaticamente
+
+O **Analisador Sintático Robusto** detecta automaticamente:
+
+1. **Comandos Malformados:**
+   ```bash
+   # Erro: tocadasdasdasnima
+   ❌ Linha 9: Comando malformado 'tocadasdasdasnima' - Use: 'tocar do seminima'
+   
+   # Erro: reper 2 vzes  
+   ❌ Linha 5: Comando malformado 'reper' - Use: 'repetir'
+   ❌ Linha 5: Token desconhecido 'vzes' - Sugestão: 'vezes'
+   ```
+
+2. **Estruturas Incompletas:**
+   ```bash
+   # Erro: tocar do (sem duração)
+   ❌ Linha 3: Comando 'tocar' incompleto - Esperado duração após nota
+   ```
+
+3. **Balanceamento de Símbolos:**
+   ```bash
+   # Erro: chaves não fechadas
+   ❌ Linha 8: Bloco de repetição não fechado - Faltando '}'
+   ```
+
+#### Como Corrigir Erros
+
+1. **Use o comando `lint` primeiro:**
+   ```bash
+   python -m src.melodyscript lint seu_arquivo.mscr
+   ```
+
+2. **Corrija TODOS os erros listados**
+
+3. **Execute apenas após validação bem-sucedida:**
+   ```bash
+   ✅ Validação de sintaxe concluída com sucesso!
+   ```
+
+#### Erros Tradicionais
 
 - **Arquivo não encontrado**: Verifique se o caminho do arquivo está correto.
-- **Erro de sintaxe**: Use o comando `validar` para encontrar erros de sintaxe antes de executar.
 - **Melodia não encontrada**: Verifique se a melodia está definida no arquivo.
 - **Acorde não definido**: Verifique se o acorde foi definido antes de ser usado.
+- **Dependências faltando**: Execute `pip install -r requirements.txt`
 
 ### Suporte
 

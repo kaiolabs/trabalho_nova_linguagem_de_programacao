@@ -1,102 +1,32 @@
 {
   "components": [
     {
-      "name": "Lexer",
-      "type": "módulo",
-      "path": "src/lexer.py (planejado)",
-      "description": "Analisador léxico para tokenização do código-fonte da MelodyScript",
-      "dependencies": ["ANTLR4/PLY"]
+      "name": "ValidadorTokens",
+      "type": "validator",
+      "path": "src/linguagem/validador_tokens.py",
+      "description": "Sistema completo de validação de todos os tokens da linguagem MelodyScript, incluindo palavras-chave, notas musicais, durações, instrumentos e estruturas de controle",
+      "dependencies": ["re", "typing"]
     },
     {
-      "name": "Parser",
-      "type": "módulo",
-      "path": "src/parser.py (planejado)",
-      "description": "Analisador sintático para construção da AST a partir dos tokens",
-      "dependencies": ["Lexer", "ANTLR4/PLY"]
+      "name": "ProcessadorComandos",
+      "type": "processor",
+      "path": "src/linguagem/parser_comandos.py",
+      "description": "Processador de comandos da linguagem MelodyScript com validação básica de sintaxe",
+      "dependencies": ["re", "ValidadorTokens"]
     },
     {
-      "name": "AST",
-      "type": "módulo",
-      "path": "src/ast.py (planejado)",
-      "description": "Definições de classes para representação da árvore sintática abstrata",
-      "dependencies": []
-    },
-    {
-      "name": "Transformer",
-      "type": "módulo",
-      "path": "src/transformer.py (planejado)",
-      "description": "Conversor de AST para código Python executável",
-      "dependencies": ["AST"]
-    },
-    {
-      "name": "AudioEngine",
-      "type": "módulo",
-      "path": "src/audio_engine.py (planejado)",
-      "description": "Motor de reprodução de áudio para as notas musicais",
-      "dependencies": ["pygame.mixer"]
+      "name": "MelodyScriptParser",
+      "type": "parser",
+      "path": "src/linguagem/parser.py",
+      "description": "Parser principal da linguagem MelodyScript com validação completa integrada",
+      "dependencies": ["ValidadorTokens", "ProcessadorComandos", "ProcessadorDefinicoes"]
     },
     {
       "name": "CLI",
-      "type": "módulo",
-      "path": "src/melodyscript.py (planejado)",
-      "description": "Interface de linha de comando para o interpretador da MelodyScript",
-      "dependencies": ["Lexer", "Parser", "Transformer", "AudioEngine"]
-    },
-    {
-      "name": "OlaMundo",
-      "type": "exemplo",
-      "path": "examples/ola_mundo.mscr (planejado)",
-      "description": "Programa de exemplo 'Olá Mundo' que toca uma sequência simples de notas",
-      "dependencies": []
-    },
-    {
-      "name": "MelodyScriptLinter",
-      "type": "módulo",
-      "path": "src/linter/core.py",
-      "description": "Classe principal do linter que orquestra todos os verificadores",
-      "dependencies": ["BalanceChecker", "SemanticChecker", "SimpleSyntaxChecker"]
-    },
-    {
-      "name": "BalanceChecker",
-      "type": "módulo",
-      "path": "src/linter/balance_checker.py",
-      "description": "Verificador de balanceamento de delimitadores (chaves, parênteses, acordes)",
-      "dependencies": ["LinterUtils"]
-    },
-    {
-      "name": "SemanticChecker",
-      "type": "módulo",
-      "path": "src/linter/semantic_checker.py",
-      "description": "Verificador semântico para detectar problemas lógicos e erros de digitação",
-      "dependencies": ["LinterUtils"]
-    },
-    {
-      "name": "SimpleSyntaxChecker",
-      "type": "módulo",
-      "path": "src/linter/simple_syntax_checker.py",
-      "description": "Verificador de sintaxe simplificado para comandos principais da linguagem",
-      "dependencies": ["LinterUtils"]
-    },
-    {
-      "name": "LinterUtils",
-      "type": "módulo",
-      "path": "src/linter/utils.py",
-      "description": "Utilitários compartilhados para os módulos do linter (remoção de comentários, constantes, etc.)",
-      "dependencies": []
-    },
-    {
-      "name": "LinterCLI",
-      "type": "módulo",
-      "path": "src/linter/cli.py",
-      "description": "Interface de linha de comando para o linter MelodyScript",
-      "dependencies": ["MelodyScriptLinter"]
-    },
-    {
-      "name": "VSCodeExtension",
-      "type": "extensão",
-      "path": "linter/src/extension.ts",
-      "description": "Extensão VSCode para MelodyScript com destaque de sintaxe, snippets e validação em tempo real integrada ao linter modular",
-      "dependencies": ["LinterCLI", "MelodyScriptInterpreter"]
+      "type": "interface",
+      "path": "src/cli.py",
+      "description": "Interface de linha de comando com comandos 'executar' e 'lint' para validação e execução",
+      "dependencies": ["MelodyScriptParser", "MelodyScriptInterpretador"]
     }
   ]
 } 

@@ -17,6 +17,7 @@ class ProcessadorComandos:
             parser: Instância do parser principal
         """
         self.parser = parser
+        self.erros_sintaxe = []  # Lista para coletar erros de sintaxe
 
     def processar_comandos_melodia(self, conteudo, comandos):
         """
@@ -30,7 +31,7 @@ class ProcessadorComandos:
         padrao_bloco_paralelo = r"inicio_paralelo\s*\{([^{}]*(?:\{[^{}]*\}[^{}]*)*)\}\s*fim_paralelo"
         pos_inicial = 0
 
-        for match in re.finditer(padrao_bloco_paralelo, conteudo):
+        for match in re.finditer(padrao_bloco_paralelo, conteudo, re.DOTALL):
             # Processar os comandos antes do bloco paralelo
             self.processar_comandos_simples(conteudo[pos_inicial : match.start()], comandos)
 
@@ -53,7 +54,7 @@ class ProcessadorComandos:
         # Encontrar estruturas condicionais
         padrao_condicional = r"se\s*\(\s*([^)]+)\s*\)\s*\{([^{}]*(?:\{[^{}]*\}[^{}]*)*)\}(?:\s*senao\s*\{([^{}]*(?:\{[^{}]*\}[^{}]*)*)\})?"
 
-        for match in re.finditer(padrao_condicional, conteudo[pos_inicial:]):
+        for match in re.finditer(padrao_condicional, conteudo[pos_inicial:], re.DOTALL):
             # Ajustar índices para a posição correta
             match_start = match.start() + pos_inicial
             match_end = match.end() + pos_inicial
@@ -85,7 +86,7 @@ class ProcessadorComandos:
 
         # Encontrar iterações "para cada"
         padrao_para_cada = r"para\s+cada\s+(\w+)\s+em\s+(\w+|reverso\(\w+\))\s*\{([^{}]*(?:\{[^{}]*\}[^{}]*)*)\}"
-        for match in re.finditer(padrao_para_cada, conteudo[pos_inicial:]):
+        for match in re.finditer(padrao_para_cada, conteudo[pos_inicial:], re.DOTALL):
             # Ajustar índices para a posição correta
             match_start = match.start() + pos_inicial
             match_end = match.end() + pos_inicial
@@ -123,7 +124,7 @@ class ProcessadorComandos:
         # Encontrar repetições
         padrao_repeticao = r"repetir\s+(\d+)\s+vezes\s*\{([^{}]*(?:\{[^{}]*\}[^{}]*)*)\}"
 
-        for match in re.finditer(padrao_repeticao, conteudo[pos_inicial:]):
+        for match in re.finditer(padrao_repeticao, conteudo[pos_inicial:], re.DOTALL):
             # Ajustar índices para a posição correta após processar condicionais
             match_start = match.start() + pos_inicial
             match_end = match.end() + pos_inicial
@@ -382,4 +383,48 @@ class ProcessadorComandos:
 
         # Se chegou aqui e a linha não está vazia, pode ser um comando não reconhecido
         if linha.strip():
-            print(f"Aviso: Linha não reconhecida como comando: '{linha}'")
+            # Verificar se contém palavras-chave que indicam erro de sintaxe real (não fragmentos)
+            if any(erro in linha.lower() for erro in ["reptir", "reir"]):  # Erros comuns de "repetir"
+                if "reptir" in linha.lower():
+                    erro_msg = f"ERRO DE SINTAXE: Palavra-chave incorreta 'reptir' - use 'repetir': '{linha}'"
+                elif "reir" in linha.lower():
+                    erro_msg = f"ERRO DE SINTAXE: Palavra-chave incorreta 'reir' - use 'repetir': '{linha}'"
+                self.erros_sintaxe.append(erro_msg)
+                # Exibir em vermelho no terminal
+                print(f"\033[91m{erro_msg}\033[0m")
+            elif linha.strip().startswith("tocar") and not any(
+                duracao in linha for duracao in ["seminima", "minima", "colcheia", "semibreve", "semicolcheia"]
+            ):
+                # Comando tocar sem duração válida
+                erro_msg = f"ERRO DE SINTAXE: Comando 'tocar' sem duração válida: '{linha}'"
+                self.erros_sintaxe.append(erro_msg)
+                print(f"\033[91m{erro_msg}\033[0m")
+            # Nota: Não verificamos chaves soltas aqui pois podem ser fragmentos do processamento interno
+            else:
+                # Não reportar fragmentos de comandos válidos como erros
+                if not any(
+                    fragmento in linha for fragmento in ["} repetir", "{ tocar", "tocar do", "tocar re", "tocar mi"]
+                ):
+                    print(f"Aviso: Linha não reconhecida como comando: '{linha}'")
+
+    def tem_erros_sintaxe(self):
+        """
+        Verifica se há erros de sintaxe coletados.
+
+        Returns:
+            bool: True se há erros, False caso contrário
+        """
+        return len(self.erros_sintaxe) > 0
+
+    def obter_erros_sintaxe(self):
+        """
+        Retorna a lista de erros de sintaxe coletados.
+
+        Returns:
+            list: Lista de mensagens de erro
+        """
+        return self.erros_sintaxe.copy()
+
+    def limpar_erros(self):
+        """Limpa a lista de erros de sintaxe."""
+        self.erros_sintaxe.clear()

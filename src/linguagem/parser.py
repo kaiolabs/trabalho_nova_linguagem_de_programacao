@@ -3,9 +3,10 @@ Parser para a linguagem MelodyScript.
 Responsável por analisar o código fonte e transformá-lo em uma estrutura de dados.
 """
 
-from src.linguagem.comandos import ProcessadorComandos
 from src.linguagem.funcoes_padrao import definir_funcoes_padrao
+from src.linguagem.parser_comandos import ProcessadorComandos
 from src.linguagem.parser_definicoes import ProcessadorDefinicoes
+from src.linguagem.validador_tokens import ValidadorTokens
 
 
 class MelodyScriptParser:
@@ -17,6 +18,7 @@ class MelodyScriptParser:
         self.reset()
         self.processador_definicoes = ProcessadorDefinicoes(self)
         self.processador_comandos = ProcessadorComandos(self)
+        self.validador_tokens = ValidadorTokens()
 
     def reset(self):
         """Reseta o estado do parser."""
@@ -65,8 +67,42 @@ class MelodyScriptParser:
                 print(conteudo)
                 print("-----------------------------------")
 
+            # VALIDAÇÃO COMPLETA DE TOKENS - PRIMEIRO PASSO
+            print("🔍 Validando sintaxe completa do arquivo...")
+
+            eh_valido, erros_validacao = self.validador_tokens.validar_arquivo(conteudo)
+
+            if not eh_valido:
+                print(
+                    f"\033[91m\n❌ ERRO DE COMPILAÇÃO: Foram encontrados {len(erros_validacao)} erro(s) de sintaxe.\033[0m"
+                )
+                print("\033[91m📋 Lista de erros encontrados:\033[0m")
+                for i, erro in enumerate(erros_validacao, 1):
+                    print(f"\033[91m  {i}. {erro}\033[0m")
+                print(
+                    "\033[91m\n🛑 A execução foi interrompida. Corrija TODOS os erros antes de executar o arquivo.\033[0m"
+                )
+                return False
+
+            print("✅ Validação de sintaxe concluída com sucesso!")
+
+            # Limpar erros anteriores do processador de comandos
+            self.processador_comandos.limpar_erros()
+
             # Processar o conteúdo do arquivo
+            print("🔄 Processando estruturas do arquivo...")
             self._processar_conteudo(conteudo)
+
+            # Verificação adicional de erros do processador de comandos
+            if self.processador_comandos.tem_erros_sintaxe():
+                print(
+                    f"\033[91m\n❌ ERRO: Foram encontrados {len(self.processador_comandos.erros_sintaxe)} erro(s) adicionais durante o processamento.\033[0m"
+                )
+                print("\033[91m📋 Erros de processamento:\033[0m")
+                for i, erro in enumerate(self.processador_comandos.erros_sintaxe, 1):
+                    print(f"\033[91m  {i}. {erro}\033[0m")
+                print("\033[91m🛑 A execução foi interrompida. Corrija os erros antes de executar o arquivo.\033[0m")
+                return False
 
             # DEBUG: Mostrar melodias encontradas
             if self._debug_mode:
@@ -74,13 +110,14 @@ class MelodyScriptParser:
                 for nome, comandos in self.melodias.items():
                     print(f"  - {nome}: {len(comandos)} comandos")
 
+            print("✅ Processamento concluído com sucesso!")
             return True
 
         except FileNotFoundError:
-            print(f"Erro: Arquivo '{caminho}' não encontrado.")
+            print(f"\033[91m❌ Erro: Arquivo '{caminho}' não encontrado.\033[0m")
             return False
         except Exception as e:
-            print(f"Erro ao processar o arquivo: {e}")
+            print(f"\033[91m❌ Erro ao processar o arquivo: {e}\033[0m")
             return False
 
     def _processar_conteudo(self, conteudo):

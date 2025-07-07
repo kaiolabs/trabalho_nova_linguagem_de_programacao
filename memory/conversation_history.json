@@ -1,139 +1,34 @@
 {
   "conversation_history": [
     {
-      "topic": "Correção dos Scripts de Reconstrução da Extensão VSCode",
-      "changes": "Modificação dos scripts rebuild_extension.sh e rebuild_extension.bat para que gerem o arquivo VSIX da extensão MelodyScript, usando o vsce localmente via npx para evitar problemas de permissão",
-      "timestamp": "2024-05-05T22:40:00Z"
+      "topic": "Correção de estruturas de repetição",
+      "changes": "Corrigido problema onde repetições eram expandidas durante parsing ao invés de serem executadas como estruturas. Modificado parser_definicoes.py para usar processar_comandos_melodia() ao invés de processar_comandos_simples().",
+      "timestamp": "2025-01-07 02:15:00"
     },
     {
-      "topic": "Desenvolvimento da MelodyScript - Linguagem Musical",
-      "changes": "Criação da linguagem de programação musical chamada MelodyScript, inspirada na simplicidade do Python. Definição de requisitos, histórias de usuário, tarefas e implementação do 'Olá Mundo' musical.",
-      "timestamp": "2023-11-16T10:00:00Z"
+      "topic": "Implementação de validação de sintaxe",
+      "changes": "Adicionado sistema de validação de sintaxe que detecta erros como 'reptir' e 'reir' ao invés de 'repetir' e para a execução quando há erros. Implementado em parser_comandos.py com exibição em vermelho no terminal. Modificado CLI para verificar erros antes de executar.",
+      "timestamp": "2025-01-07 02:20:00"
     },
     {
-      "topic": "Análise e entendimento do projeto MelodyScript",
-      "changes": "Análise completa dos arquivos do projeto, incluindo requisitos, exemplos, código de implementação e documentação. Compreensão da estrutura atual e próximos passos.",
-      "timestamp": "2023-11-16T10:30:00Z"
+      "topic": "Correção do erro no arquivo examples/repeticao.mscr onde estava escrito 'reir' ao invés de 'repetir' na primeira repetição",
+      "changes": "Corrigido erro no arquivo examples/repeticao.mscr onde estava escrito 'reir' ao invés de 'repetir' na primeira repetição. Agora todas as repetições funcionam corretamente.",
+      "timestamp": "2025-01-07 02:25:00"
     },
     {
-      "topic": "Requisitos para linguagem baseada em Python e linter",
-      "changes": "Criação do arquivo requisitos_linguagem_python.md com lista detalhada de requisitos para desenvolvimento de uma linguagem musical baseada em Python e um linter personalizado",
-      "timestamp": "2023-11-17T15:20:00Z"
+      "topic": "Implementação de validação completa de tokens no MelodyScript",
+      "changes": "Criado sistema completo de validação de todos os tokens da linguagem MelodyScript, incluindo palavras-chave, notas musicais, durações, instrumentos, estruturas de controle e detecção de erros comuns. Integrado validador no parser principal e CLI com feedback visual em cores.",
+      "timestamp": "2024-12-19"
     },
     {
-      "topic": "Estrutura de gerenciamento e requisitos para 'Olá Mundo'",
-      "changes": "Criação da pasta gerenciamento_projeto com arquivos de histórias de usuário, tarefas e status do projeto. Também criação do arquivo ola_mundo_requisitos.md com definição detalhada da implementação do 'Olá Mundo' musical.",
-      "timestamp": "2023-11-19T10:30:00Z"
+      "topic": "Correção crítica: Eliminação de substituições indevidas de notas e durações inválidas",
+      "changes": "Corrigido problema grave onde o sistema substituía notas inválidas por 'lá' (A4) e durações inválidas por 'seminima'. Agora o sistema lança exceções ValueError e para a execução imediatamente quando encontra notas, durações ou modificadores inválidos. Atualizado interpretador para capturar essas exceções e mostrar mensagens de erro claras.",
+      "timestamp": "2024-12-19"
     },
     {
-      "topic": "Definição do nome da linguagem e extensão de arquivo",
-      "changes": "Decisão de nomear a linguagem como 'MelodyScript' e utilizar a extensão de arquivo '.mscr'. Atualização de todos os documentos relevantes para refletir esta decisão.",
-      "timestamp": "2023-11-19T11:30:00Z"
-    },
-    {
-      "topic": "Redefinição da sintaxe para ser mais pythônica",
-      "changes": "Completa reformulação da sintaxe da MelodyScript para ser mais pythônica, utilizando indentação em vez de chaves para delimitar blocos. Criação de exemplo 'Olá Mundo' (Frère Jacques) com a nova sintaxe e atualização de toda a documentação do projeto.",
-      "timestamp": "2023-11-19T12:30:00Z"
-    },
-    {
-      "topic": "Análise do projeto MelodyScript",
-      "changes": "Revisão completa da estrutura do projeto, incluindo os arquivos de requisitos, exemplos, código de implementação, roadmap e documentação. Identificação do estado atual de desenvolvimento e dos próximos passos a serem implementados.",
-      "timestamp": "2023-11-26T14:30:00Z"
-    },
-    {
-      "topic": "Configuração do ambiente de desenvolvimento",
-      "changes": "Criação do arquivo requirements.txt com as dependências necessárias. Configuração do ambiente virtual (.venv) e atualização do README.md com instruções detalhadas para setup do ambiente. Adição de arquivo .gitignore para excluir arquivos desnecessários.",
-      "timestamp": "2023-11-26T15:30:00Z"
-    },
-    {
-      "topic": "Configuração inicial do projeto MelodyScript",
-      "changes": "Criação de estrutura básica do projeto, incluindo ambiente virtual, requirements.txt, e exemplos iniciais",
-      "timestamp": "2023-11-26T15:30:00Z"
-    },
-    {
-      "topic": "Implementação do interpretador MelodyScript",
-      "changes": "Desenvolvimento dos módulos principais: audio_engine.py, teoria_musical.py, parser.py, interpretador.py e cli.py",
-      "timestamp": "2023-12-03T14:45:00Z"
-    },
-    {
-      "topic": "Melhoria do MelodyScript",
-      "changes": "Implementação de suporte a funções definidas pelo usuário e iteração 'para cada' sobre acordes, atualização do linter para reconhecer novos elementos da linguagem, adição de exemplo demonstrando as novas funcionalidades",
-      "timestamp": "2023-11-01T15:30:00Z"
-    },
-    {
-      "topic": "Implementação do linter e extensão VSCode",
-      "changes": "Criação de linter para MelodyScript e extensão VSCode com destaque de sintaxe, snippets e validação em tempo real",
-      "timestamp": "2023-06-15T16:30:00Z"
-    },
-    {
-      "topic": "Reorganização do projeto",
-      "changes": "Reorganização da estrutura do projeto seguindo o princípio de responsabilidade única, divisão do código em módulos core, linguagem, audio e utils",
-      "timestamp": "2023-05-10T14:20:00Z"
-    },
-    {
-      "topic": "Implementação inicial",
-      "changes": "Implementação básica do interpretador MelodyScript com suporte a notas, acordes, durações e controle de envelope ADSR",
-      "timestamp": "2023-04-05T10:15:00Z"
-    },
-    {
-      "topic": "Correção de problemas no linter da MelodyScript",
-      "changes": "Correção de três problemas principais no linter da MelodyScript: 1) Reconhecimento correto de notas musicais ('si') vs palavras-chave ('se'); 2) Detecção inteligente de operadores de comparação vs delimitadores de acordes; 3) Validação de parâmetros de função em chamadas de função",
-      "timestamp": "2024-05-11T15:20:00Z"
-    },
-    {
-      "topic": "Implementação de Ícone Personalizado para Arquivos MelodyScript",
-      "changes": "Criação de um ícone personalizado com nota musical para arquivos .mscr, configuração da extensão VSCode para usar o ícone, e atualização dos scripts de instalação da extensão",
-      "timestamp": "2024-05-11T23:30:00Z"
-    },
-    {
-      "topic": "Refatoração Modular do Linter MelodyScript",
-      "changes": "Refatoração completa do linter MelodyScript seguindo o princípio de responsabilidade única. O arquivo linter.py monolítico foi dividido em módulos especializados: src/linter/core.py (classe principal), balance_checker.py (verificação de delimitadores), semantic_checker.py (verificação semântica), simple_syntax_checker.py (verificação de sintaxe), utils.py (utilitários compartilhados) e cli.py (interface de linha de comando). A nova arquitetura modular facilita manutenção, testabilidade e evolução do código.",
-      "timestamp": "2024-12-19T18:45:00Z"
-    },
-    {
-      "topic": "Integração da Extensão VSCode com Linter Modular",
-      "changes": "Atualização da extensão VSCode MelodyScript para integrar com o novo linter modular refatorado. Modificação do src/extension.ts para chamar 'python -m src.linter.cli' em vez do antigo src/linter.py. Recompilação e reinstalação da extensão com a nova integração. A extensão agora utiliza corretamente os módulos especializados de verificação de sintaxe, semântica e balanceamento.",
-      "timestamp": "2024-12-19T19:15:00Z"
-    },
-    {
-      "topic": "Estudo detalhado do projeto MelodyScript",
-      "changes": "Análise completa da arquitetura e funcionalidades da linguagem musical MelodyScript",
-      "timestamp": "2024-12-19 16:30:00"
-    },
-    {
-      "topic": "Instalação da extensão VSCode para MelodyScript",
-      "changes": "Compilação e instalação bem-sucedida da extensão VSCode com recursos de destaque de sintaxe, linter e execução de arquivos .mscr",
-      "timestamp": "2024-12-19 17:00:00"
-    },
-    {
-      "topic": "Refatoração do linter MelodyScript",
-      "changes": "Início da modularização do linter monolítico em componentes com responsabilidade única - criados módulos utils, balance_checker, syntax_checker e semantic_checker",
-      "timestamp": "2024-12-19 17:30:00"
-    },
-    {
-      "topic": "Correção do problema de execução no PowerShell",
-      "changes": "Identificado e corrigido problema de sintaxe na extensão VSCode que impedia execução de arquivos .mscr no PowerShell. Alterado operador '&&' para ';' no Windows para compatibilidade com PowerShell. Extensão recompilada e reinstalada com sucesso.",
-      "timestamp": "2024-12-19 18:00:00"
-    },
-    {
-      "topic": "Resolução do problema de ambiente virtual Windows",
-      "changes": "Identificado e resolvido problema crítico com ambiente virtual criado em sistema Unix/Linux incompatível com Windows. Recriado ambiente virtual com estrutura 'Scripts' para Windows, instalação completa das dependências (pygame, numpy, click, pytest, black, pylint) e validação do funcionamento completo do MelodyScript. Testes bem-sucedidos com exemplos ola_mundo.mscr, teste_ordem.mscr e validação de erros com linter.",
-      "timestamp": "2025-01-26 15:45:00"
-    },
-    {
-      "topic": "Configuração da funcionalidade F5 para execução automática",
-      "changes": "Configurado e otimizado a funcionalidade F5 para execução automática de arquivos MelodyScript no VSCode. Melhorado o script run_melodyscript.bat com tratamento robusto de caminhos e aspas usando setlocal enabledelayedexpansion. Recompilada e reinstalada a extensão VSCode. Criado arquivo teste_f5.mscr para demonstração. A funcionalidade permite pressionar F5 em qualquer arquivo .mscr aberto no VSCode para executá-lo automaticamente.",
-      "timestamp": "2025-01-26 16:30:00"
-    },
-    {
-      "topic": "Criação de resposta ao Exercício 11.1 sobre ações semânticas",
-      "changes": "Desenvolvida resposta completa ao exercício acadêmico sobre ações semânticas para a linguagem MelodyScript. Identificados dois aspectos críticos: 1) Verificação de Coerência Tonal - detecção de notas fora da escala definida; 2) Validação de Capacidades do Instrumento - verificação de limitações de registro e polifonia. Após experimentar formato HTML, criado documento final em texto puro (exercicio_11_1_acoes_semanticas.txt) conforme preferência por simplicidade máxima.",
-      "timestamp": "2025-01-26 18:15:00"
-    },
-    {
-      "topic": "Avaliação completa dos critérios acadêmicos do projeto MelodyScript",
-      "changes": "Criado arquivo AVALIACAO_CRITERIOS.md na raiz do projeto com análise detalhada de todos os critérios de avaliação: 1) Tokens e analisador léxico (2,0/2,0); 2) GLC e analisador sintático (2,0/2,0); 3) Apresentação das saídas (2,0/2,0); 4) Relatório completo (2,0/2,0); 5) Apresentação/demonstração (2,0/2,0). Documentação inclui gramática BNF formal, mapeamento completo de tokens, referências específicas aos arquivos de implementação e justificativas técnicas. Pontuação total: 10,0/10,0 (100%) - TODOS OS CRITÉRIOS ATENDIDOS COMPLETAMENTE.",
-      "timestamp": "2025-01-26 19:30:00"
+      "topic": "Correção crítica: Bug no validador permitia execução de código com erros de sintaxe",
+      "changes": "Corrigido bug crítico onde o validador não detectava erros comuns como 'reper' e 'vzes', permitindo execução de código com erros de sintaxe. Adicionados erros críticos à lista de erros comuns, corrigida lógica de verificação e melhorada validação de estruturas de repetição. Sistema agora funciona como compilador profissional que NUNCA executa código com erros.",
+      "timestamp": "2024-12-19"
     }
   ]
 } 

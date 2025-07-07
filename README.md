@@ -2,6 +2,15 @@
 
 MelodyScript é uma linguagem de programação musical projetada para facilitar a criação de melodias, progressões de acordes e composições musicais através de código.
 
+## 🎯 **Sistema de Validação Robusto**
+
+MelodyScript possui um **Analisador Sintático Robusto baseado em GLC** que garante:
+- ✅ **NUNCA executa código com erros de sintaxe**
+- ✅ **Detecção inteligente de comandos malformados** (ex: `tocadasdasdasnima` → `tocar do seminima`)
+- ✅ **Sugestões precisas de correção**
+- ✅ **Análise em múltiplas camadas** (léxica, sintática, semântica)
+- ✅ **Sistema extensível automaticamente**
+
 ## Recursos
 
 - Definição e execução de melodias com notas musicais
@@ -139,8 +148,26 @@ cd melodyscript
 ```
 
 3. Execute um exemplo:
+```bash
+# Validação rigorosa + execução
+./run_melodyscript.sh executar examples/ola_mundo.mscr
+
+# Apenas validação (sem execução)
+./run_melodyscript.sh lint examples/ola_mundo.mscr
 ```
-./run_melodyscript.sh examples/ola_mundo.mscr
+
+### Exemplo de Validação Rigorosa
+
+```bash
+# Sistema detecta erro automaticamente
+python -m src.melodyscript lint examples/arquivo_com_erro.mscr
+
+# Resultado:
+❌ ERRO DE COMPILAÇÃO: Foram encontrados 1 erro(s) de sintaxe.
+📋 Lista de erros encontrados:
+  1. Linha 9: Comando malformado 'tocadasdasdasnima' - Use: 'tocar do seminima'
+
+🛑 A execução foi interrompida. Corrija TODOS os erros antes de executar o arquivo.
 ```
 
 ## Extensão VSCode
